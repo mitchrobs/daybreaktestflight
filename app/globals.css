@@ -56,6 +56,9 @@ main {
   margin-top: 18px;
   display: grid;
   gap: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  padding: 12px;
 }
 
 .topbar,
@@ -66,11 +69,15 @@ main {
 .imessage-screen-shell,
 .footer {
   border-radius: 22px;
+  border: 1px solid var(--line-soft);
   background: var(--surface);
   box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 .topbar {
+  position: sticky;
+  top: max(env(safe-area-inset-top), 10px);
+  z-index: 40;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +117,7 @@ main {
   padding: clamp(22px, 4vw, 34px);
   display: grid;
   gap: 14px;
+  border: 0;
   background: transparent;
   box-shadow: none;
 }
@@ -235,6 +243,7 @@ main {
   padding: 0;
   gap: 8px;
   border-radius: 0;
+  border: 0;
   background: transparent;
   box-shadow: none;
 }
@@ -303,7 +312,7 @@ main {
   padding: 10px;
   min-height: 94px;
   color: #ffffff;
-  background: linear-gradient(138deg, var(--card-c1) 0%, var(--card-c2) 74%, var(--card-c3) 100%);
+  background: linear-gradient(138deg, var(--card-c1) 0%, var(--card-c2) 100%);
   box-shadow: 0 8px 15px rgba(16, 22, 39, 0.14);
   transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
 }
@@ -331,7 +340,7 @@ main {
 .game-icon-symbol {
   width: 30px;
   height: 30px;
-  filter: drop-shadow(0 1px 2px rgba(12, 20, 34, 0.22));
+  filter: none;
 }
 
 .game-icon-card[data-game="moji-mash"] {
