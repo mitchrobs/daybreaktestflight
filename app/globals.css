@@ -12,6 +12,8 @@
   --imsg-canvas: #f2f2f7;
   --imsg-surface: #ffffff;
   --imsg-border: rgba(60, 60, 67, 0.2);
+  --imsg-thread-bg: #e5e5ea;
+  --imsg-thread-border: rgba(60, 60, 67, 0.08);
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
   --cta-g3: #2f6fff;
@@ -514,10 +516,10 @@ main {
 }
 
 .imessage-thread-shell {
-  border: 1px solid var(--imsg-border);
+  border: 1px solid var(--imsg-thread-border);
   border-radius: 14px;
   padding: 9px;
-  background: var(--imsg-canvas);
+  background: var(--imsg-thread-bg);
 }
 
 .imessage-thread {
@@ -980,6 +982,8 @@ main {
     --imsg-canvas: #000000;
     --imsg-surface: #000000;
     --imsg-border: rgba(255, 255, 255, 0.11);
+    --imsg-thread-bg: #1c1c1e;
+    --imsg-thread-border: rgba(255, 255, 255, 0.06);
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }
@@ -1024,8 +1028,8 @@ main {
   }
 
   .imessage-thread-shell {
-    background: var(--imsg-canvas);
-    border-color: var(--imsg-border);
+    background: var(--imsg-thread-bg);
+    border-color: var(--imsg-thread-border);
   }
 
   .field,
