@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { IMessageTimestamp } from "@/components/imessage-timestamp";
 import { WaitlistForm } from "@/components/waitlist-form";
+import { buildPreviewImageUrl, buildPreviewInviteUrl, getPreviewDomain } from "@/lib/imessage-preview";
 
 type LandingPageProps = {
   referralCode?: string;
@@ -9,8 +11,9 @@ type LandingPageProps = {
 };
 
 export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
-  const previewCode = referralCode ?? "PREVIEW";
-  const previewImageUrl = `/api/og/invite/${encodeURIComponent(previewCode)}.png`;
+  const previewInviteUrl = buildPreviewInviteUrl(referralCode);
+  const previewImageUrl = buildPreviewImageUrl(referralCode);
+  const previewDomain = getPreviewDomain(previewInviteUrl);
   const previewTitle = inviterName ? `${inviterName} invited you to join Daybreak` : "Join Daybreak on TestFlight";
 
   return (
@@ -54,57 +57,26 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
           <div className="visual-grid">
             <article className="screen imessage-screen" aria-label="iMessage invite preview">
               <div className="screen-header">iMessage invite preview</div>
-              <div className="ios-device-frame">
-                <div className="ios-notch" aria-hidden="true" />
-                <div className="ios-statusbar">
-                  <span>9:41</span>
-                  <div className="ios-status-icons" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                </div>
-                <div className="imessage-header ios-nav">
-                  <span className="imessage-back" aria-hidden="true">
-                    &lt; Messages
-                  </span>
-                  <strong>NYT Games Group</strong>
-                  <span className="ios-info" aria-hidden="true">
-                    i
-                  </span>
-                </div>
-                <div className="imessage-thread">
-                  <div className="imessage-bubble incoming">Wordle 969 4/6. Needed every row.</div>
-                  <div className="imessage-bubble incoming alt">Connections: purple cooked me today.</div>
-                  <div className="imessage-bubble typing" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="imessage-bubble outgoing link-bubble">
-                    <p>I&apos;m trying Daybreak. Join me and share your NYT puzzle results here too.</p>
-                    <div className="imessage-link-card" role="img" aria-label={previewTitle}>
-                      <div className="imessage-link-image-wrap">
-                        <Image
-                          src={previewImageUrl}
-                          alt={previewTitle}
-                          width={1200}
-                          height={1200}
-                          className="imessage-link-image-actual"
-                          unoptimized
-                        />
-                      </div>
-                      <div className="imessage-link-meta">
-                        <strong>{previewTitle}</strong>
-                        <span>daybreak.app</span>
-                      </div>
+              <div className="imessage-thread">
+                <div className="imessage-bubble incoming">Where are you?</div>
+                <IMessageTimestamp />
+                <div className="imessage-bubble outgoing link-bubble">
+                  <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
+                    <div className="imessage-link-image-wrap">
+                      <Image
+                        src={previewImageUrl}
+                        alt={previewTitle}
+                        width={1200}
+                        height={1200}
+                        className="imessage-link-image-actual"
+                        unoptimized
+                      />
                     </div>
-                  </div>
-                </div>
-                <div className="ios-input-row" aria-hidden="true">
-                  <span className="ios-plus">+</span>
-                  <span className="ios-message-placeholder">iMessage</span>
-                  <span className="ios-mic" />
+                    <div className="imessage-link-meta">
+                      <strong>{previewTitle}</strong>
+                      <span>{previewDomain}</span>
+                    </div>
+                  </a>
                 </div>
               </div>
             </article>

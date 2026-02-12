@@ -2,19 +2,17 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { LandingPage } from "@/components/landing-page";
+import { buildPreviewInviteUrl, getPreviewDomain } from "@/lib/imessage-preview";
 
 describe("landing page invite preview", () => {
-  it("removes legacy proof/invitation rows and renders the new fixed iMessage invite text", () => {
-    const markup = renderToStaticMarkup(createElement(LandingPage, {}));
+  it("renders iMessage-style thread without full iPhone chrome and with dynamic preview image url", () => {
+    const markup = renderToStaticMarkup(createElement(LandingPage, { referralCode: "ABC123" }));
+    const expectedDomain = getPreviewDomain(buildPreviewInviteUrl("ABC123"));
 
-    expect(markup).not.toContain("Invite-only TestFlight access.");
-    expect(markup).not.toContain("Weekly TestFlight waves");
-    expect(markup).not.toContain("+5 per confirmed referral");
-    expect(markup).not.toContain("Submit signup");
-    expect(markup).not.toContain("Confirm email");
-    expect(markup).not.toContain("Share invite link");
-    expect(markup).not.toContain("Climb queue");
-
-    expect(markup).toContain("I&#x27;m trying Daybreak. Join me and share your NYT puzzle results here too.");
+    expect(markup).not.toContain("ios-device-frame");
+    expect(markup).toContain("Where are you?");
+    expect(markup).toContain("Today");
+    expect(markup).toContain("/api/og/invite/ABC123.png");
+    expect(markup).toContain(expectedDomain);
   });
 });
