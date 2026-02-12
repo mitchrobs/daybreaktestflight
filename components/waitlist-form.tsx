@@ -71,9 +71,9 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
 
   return (
     <div className="waitlist-card" id="waitlist">
-      <div className="screen-header">Join the queue</div>
+      <div className="screen-header">Request your invite</div>
       <p className="waitlist-note">
-        Use your Apple ID email for TestFlight access. Invite waves go out weekly.
+        Use the Apple ID email you want for TestFlight. Confirm your inbox to activate your invite link.
       </p>
 
       <form onSubmit={handleSubmit} className="waitlist-form" noValidate>
@@ -107,7 +107,7 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
         />
 
         <button className="cta" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Get Early Access"}
+          {isSubmitting ? "Submitting..." : "Join The Queue"}
         </button>
       </form>
 

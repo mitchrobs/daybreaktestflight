@@ -7,116 +7,102 @@ type LandingPageProps = {
 };
 
 export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
+  const inviteLine = inviterName ? `${inviterName} invited you to Daybreak.` : "Invite-only TestFlight access.";
+
   return (
     <div className="landing-shell">
-      <div className="orb orb-left" aria-hidden="true" />
-      <div className="orb orb-right" aria-hidden="true" />
-
-      <header className="site-header">
+      <header className="topbar">
         <span className="wordmark">Daybreak</span>
-        <a className="cta subtle desktop-only" href="#waitlist">
-          Join Queue
-        </a>
+        <span className="badge-pill">Private Beta</span>
       </header>
 
-      <main className="landing-main">
+      <main>
         {inviterName ? (
-          <section className="invite-banner reveal" aria-live="polite">
-            <p>
-              You were invited by <strong>{inviterName}</strong>
-            </p>
-            <p>Your confirmed signup gives {inviterName} +5 queue points.</p>
+          <section className="invite-banner" aria-live="polite">
+            <strong>{inviterName}</strong> shared a personal invite with you. If you confirm your email, they get +5.
           </section>
         ) : null}
 
-        <section className="hero-grid" aria-labelledby="hero-title">
-          <div className="hero-copy reveal">
-            <p className="hero-tag">Private TestFlight Beta</p>
-            <h1 id="hero-title" className="hero-title">
-              Bring your NYT Games group chat into Daybreak first.
-            </h1>
-            <p className="hero-subtitle">
-              Daily puzzle check-ins, tighter conversation, and a calmer iOS routine. Join the queue, confirm your
-              email, and invite friends with your personalized iMessage preview card.
-            </p>
-
-            <div className="hero-chips">
-              <span>iOS only</span>
-              <span>Weekly invite waves</span>
-              <span>+5 per confirmed referral</span>
-            </div>
-
-            <div className="hero-actions">
-              <a className="cta" href="#waitlist">
-                Request Access
-              </a>
-              <a className="cta subtle" href="#how-it-works">
-                How It Works
-              </a>
-            </div>
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-stack" id="hero-title">
+            <div className="hero-line">You&apos;re</div>
+            <div className="hero-line">Invited</div>
+            <div className="hero-line">To Daybreak</div>
+            <div className="hero-line">For NYT</div>
+            <div className="hero-line">Group Chats</div>
           </div>
 
-          <div className="hero-side reveal">
-            <WaitlistForm referralCode={referralCode} />
+          <p className="hero-sub">
+            Join the TestFlight queue, get your personal iMessage invite card, and bring your puzzle group in early.
+          </p>
 
-            <aside className="preview-card" aria-label="Invite preview">
-              <div className="preview-label">iMessage rich-link preview</div>
-              <div className="preview-bubble">
-                <div className="preview-bubble-title">
-                  {inviterName ? `${inviterName} invited you` : "Your name appears here"}
-                </div>
-                <div className="preview-bubble-copy">Bring your NYT Games group chat to Daybreak.</div>
+          <div className="hero-actions">
+            <a className="cta primary" href="#waitlist">
+              Request Invite
+            </a>
+            <a className="cta" href="#how-it-works">
+              How It Works
+            </a>
+          </div>
+        </section>
+
+        <section className="visuals">
+          <div className="proof-strip">
+            <span>{inviteLine}</span>
+            <span>Weekly TestFlight waves</span>
+            <span>+5 per confirmed referral</span>
+          </div>
+
+          <div className="visual-grid">
+            <article className="screen invitation-screen">
+              <div className="screen-header">iMessage invite preview</div>
+              <div className="preview-bubble-title">{inviterName ? `${inviterName} invited you` : "Your name invited them"}</div>
+              <p className="screen-note">Bring your NYT Games group chat to Daybreak.</p>
+              <div className="screen-item">
+                <span>Submit signup</span>
+                <span className="time">Now</span>
               </div>
-            </aside>
+              <div className="screen-item">
+                <span>Confirm email</span>
+                <span className="time">~1 min</span>
+              </div>
+              <div className="screen-item">
+                <span>Share invite link</span>
+                <span className="time">Instant</span>
+              </div>
+              <div className="screen-item">
+                <span>Climb queue</span>
+                <span className="time">+5</span>
+              </div>
+            </article>
+
+            <WaitlistForm referralCode={referralCode} />
           </div>
         </section>
 
-        <section className="steps-section reveal" id="how-it-works">
-          <h2>How the queue works</h2>
-          <div className="steps-grid">
-            <article className="step-card">
-              <span className="step-index">01</span>
-              <h3>Join with Apple ID email</h3>
-              <p>Use the email you want on TestFlight and confirm it in one tap.</p>
-            </article>
-            <article className="step-card">
-              <span className="step-index">02</span>
-              <h3>Get your personal invite link</h3>
-              <p>After confirmation, you unlock a custom share link with your name in the preview image.</p>
-            </article>
-            <article className="step-card">
-              <span className="step-index">03</span>
-              <h3>Move up with referrals</h3>
-              <p>Each confirmed friend signup adds +5 points to your position.</p>
-            </article>
-          </div>
+        <section className="copy">
+          <p>Daybreak is a calm daily ritual for people already discussing Wordle and Connections every day.</p>
+          <p>This beta is invitation-driven so each wave stays high-quality and conversational.</p>
+          <p id="how-it-works">Once confirmed, your referral link carries your name into the rich-link preview image.</p>
         </section>
 
-        <section className="detail-grid reveal">
-          <article className="detail-card">
-            <h2>Why this beta is different</h2>
-            <ul className="detail-list">
-              <li>Built for puzzle players already sharing Wordle and Connections in group chats.</li>
-              <li>Invite system is iMessage-native, not a generic referral spreadsheet.</li>
-              <li>Manual weekly waves keep the TestFlight cohort intentional and high-signal.</li>
-            </ul>
+        <section className="steps">
+          <article>
+            <h3>01 Join</h3>
+            <p>Use your Apple ID email.</p>
           </article>
-
-          <article className="detail-card faq-card">
-            <h2>FAQ</h2>
-            <dl>
-              <dt>When are invites sent?</dt>
-              <dd>We send TestFlight invites in weekly waves.</dd>
-              <dt>Does referral signup count instantly?</dt>
-              <dd>No. Referral points are added only after email confirmation.</dd>
-              <dt>What devices are supported?</dt>
-              <dd>iPhone on iOS through Apple TestFlight.</dd>
-            </dl>
+          <article>
+            <h3>02 Confirm</h3>
+            <p>Unlock your personal invite link.</p>
+          </article>
+          <article>
+            <h3>03 Invite</h3>
+            <p>Each confirmed friend moves you up.</p>
           </article>
         </section>
       </main>
 
-      <footer className="site-footer">
+      <footer className="footer">
         <div className="footer-links">
           <Link href="#waitlist">Waitlist</Link>
           <span>•</span>
@@ -124,12 +110,12 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
           <span>•</span>
           <Link href="/">Daybreak</Link>
         </div>
-        <div className="footer-meta">Invite-only beta • iOS TestFlight • ©2026</div>
+        <div className="footer-meta">Invite-only beta • Built for iOS TestFlight • ©2026</div>
       </footer>
 
       <div className="mobile-sticky-cta">
-        <a className="cta" href="#waitlist">
-          Join The Queue
+        <a className="cta primary" href="#waitlist">
+          Request Invite
         </a>
       </div>
     </div>
