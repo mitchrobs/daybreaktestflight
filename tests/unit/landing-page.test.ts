@@ -5,18 +5,30 @@ import { LandingPage } from "@/components/landing-page";
 import { buildPreviewInviteUrl, getPreviewDomain } from "@/lib/imessage-preview";
 
 describe("landing page invite preview", () => {
-  it("renders iMessage-style thread without full iPhone chrome and with dynamic preview image url", () => {
+  it("renders the refreshed landing flow while preserving iMessage thread behavior", () => {
     const markup = renderToStaticMarkup(createElement(LandingPage, { referralCode: "ABC123" }));
     const expectedDomain = getPreviewDomain(buildPreviewInviteUrl("ABC123"));
-    const waitlistIndex = markup.indexOf("Request your invite");
+    const heroIndex = markup.indexOf("Smart games and puzzles that you&#x27;ll look forward to each day.");
+    const gamesIndex = markup.indexOf("Today in Gameshow");
+    const waitlistIndex = markup.indexOf("Early Access");
     const previewIndex = markup.indexOf("imessage-thread");
     const incomingScoreIndex = markup.indexOf("#106 3/6");
     const outgoingPreviewIndex = markup.indexOf("link-bubble");
 
     expect(markup).not.toContain("ios-device-frame");
     expect(markup).not.toContain('class="screen-header">iMessage invite preview');
-    expect(markup).toContain("Import your games group chat in one click");
-    expect(markup).toContain("Daybreak groups share your daily game results with your friends");
+    expect(markup).toContain("Smart games and puzzles that you&#x27;ll look forward to each day.");
+    expect(markup).toContain("Start Playing");
+    expect(markup).toContain("Today in Gameshow");
+    expect(markup).toContain("Bridges");
+    expect(markup).toContain("Barter");
+    expect(markup).toContain("Moji Mash");
+    expect(markup).toContain("Wordie");
+    expect(markup).toContain("Mini Sudoku");
+    expect(markup).toContain("Whodunit");
+    expect(markup).toContain("Trivia");
+    expect(markup).toContain("Mini Crossword");
+    expect(markup).toContain("Your group chat, ready in one tap.");
     expect(markup).toContain("#106 3/6");
     expect(markup).toContain("⬛⬛🟨⬛⬛");
     expect(markup).toContain("⬛🟩⬛⬛⬛");
@@ -28,7 +40,10 @@ describe("landing page invite preview", () => {
     expect(markup).not.toContain("How It Works");
     expect(markup).toContain("/api/og/invite/ABC123.png");
     expect(markup).toContain(expectedDomain);
+    expect(heroIndex).toBeGreaterThan(-1);
+    expect(gamesIndex).toBeGreaterThan(heroIndex);
     expect(waitlistIndex).toBeGreaterThan(-1);
+    expect(waitlistIndex).toBeGreaterThan(gamesIndex);
     expect(previewIndex).toBeGreaterThan(waitlistIndex);
     expect(incomingScoreIndex).toBeGreaterThan(-1);
     expect(outgoingPreviewIndex).toBeGreaterThan(incomingScoreIndex);

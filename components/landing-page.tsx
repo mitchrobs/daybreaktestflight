@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { GameIconShowcase } from "@/components/game-icon-showcase";
 import { IMessagePreviewThread } from "@/components/imessage-preview-thread";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buildPreviewImageUrl, buildPreviewInviteUrl, getPreviewDomain } from "@/lib/imessage-preview";
@@ -30,32 +31,45 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
         ) : null}
 
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-stack" id="hero-title">
-            <div className="hero-line">You&apos;re</div>
-            <div className="hero-line">Invited</div>
-            <div className="hero-line">To Daybreak</div>
-            <div className="hero-line">For NYT</div>
-            <div className="hero-line">Group Chats</div>
-          </div>
+          <div className="hero-inner">
+            <p className="hero-eyebrow">Invite-only iOS beta</p>
+            <h1 className="hero-title" id="hero-title">
+              Smart games and puzzles that you&apos;ll look forward to each day.
+            </h1>
 
-          <p className="hero-sub">
-            Join the TestFlight queue, get your personal iMessage invite card, and bring your puzzle group in early.
-          </p>
+            <p className="hero-sub">Daily play, shared wins, and group-chat momentum with people you actually play with.</p>
 
-          <div className="hero-actions">
-            <a className="cta primary" href="#waitlist">
-              Request Invite
-            </a>
+            <div className="hero-actions">
+              <a className="cta primary" href="#waitlist">
+                Start Playing
+              </a>
+            </div>
           </div>
         </section>
 
-        <section className="visuals">
-          <div className="visual-grid">
-            <WaitlistForm referralCode={referralCode} />
+        <GameIconShowcase />
 
+        <section className="early-access" aria-labelledby="early-access-title">
+          <div className="early-access-copy">
+            <h2 id="early-access-title">Get early access.</h2>
+            <p>Join the waitlist, claim your private invite link, and bring your puzzle group in before public launch.</p>
+          </div>
+
+          <WaitlistForm
+            referralCode={referralCode}
+            title="Early Access"
+            note="Use your Apple ID email. We will send your invite card as soon as your spot is confirmed."
+            submitLabel="Start Playing"
+          />
+        </section>
+
+        <section className="imessage-screen-shell">
+          <div className="visual-grid">
             <article className="imessage-screen" aria-label="iMessage invite preview">
-              <h2 className="imessage-heading">Import your games group chat in one click</h2>
-              <p className="imessage-subheader">Daybreak groups share your daily game results with your friends</p>
+              <h2 className="imessage-heading">Your group chat, ready in one tap.</h2>
+              <p className="imessage-subheader">
+                Daybreak turns your daily score into a clean share card so your friends can jump straight in from iMessage.
+              </p>
               <IMessagePreviewThread
                 previewInviteUrl={previewInviteUrl}
                 previewImageUrl={previewImageUrl}
@@ -95,7 +109,7 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
 
       <div className="mobile-sticky-cta">
         <a className="cta primary" href="#waitlist">
-          Request Invite
+          Start Playing
         </a>
       </div>
     </div>

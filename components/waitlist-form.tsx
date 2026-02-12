@@ -5,6 +5,9 @@ import { trackPlausibleEvent } from "@/lib/plausible";
 
 type WaitlistFormProps = {
   referralCode?: string;
+  title?: string;
+  note?: string;
+  submitLabel?: string;
 };
 
 type SignupResponse =
@@ -19,7 +22,12 @@ type SignupResponse =
       message: string;
     };
 
-export function WaitlistForm({ referralCode }: WaitlistFormProps) {
+export function WaitlistForm({
+  referralCode,
+  title = "Request your invite",
+  note = "Use the Apple ID email you want for TestFlight. Confirm your inbox to activate your invite link.",
+  submitLabel = "Join The Queue"
+}: WaitlistFormProps) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,10 +79,8 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
 
   return (
     <div className="waitlist-card" id="waitlist">
-      <div className="screen-header">Request your invite</div>
-      <p className="waitlist-note">
-        Use the Apple ID email you want for TestFlight. Confirm your inbox to activate your invite link.
-      </p>
+      <div className="screen-header">{title}</div>
+      <p className="waitlist-note">{note}</p>
 
       <form onSubmit={handleSubmit} className="waitlist-form" noValidate>
         <label className="field-label" htmlFor="first-name">
@@ -107,7 +113,7 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
         />
 
         <button className="cta" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Join The Queue"}
+          {isSubmitting ? "Submitting..." : submitLabel}
         </button>
       </form>
 
