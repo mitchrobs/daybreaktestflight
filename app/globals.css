@@ -13,6 +13,7 @@
   --imsg-surface: #ffffff;
   --imsg-thread-bg: #ffffff;
   --imsg-thread-border: rgba(60, 60, 67, 0.04);
+  --imsg-blue: #007aff;
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
   --cta-g3: #2f6fff;
@@ -725,6 +726,9 @@ main {
   max-width: min(82vw, 300px);
   font-size: 0.84rem;
   line-height: 1.24;
+  background: var(--imsg-blue);
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .imessage-bubble.outgoing.followup-outgoing-bubble.is-hidden {
@@ -1051,6 +1055,7 @@ main {
     --imsg-surface: #000000;
     --imsg-thread-bg: #000000;
     --imsg-thread-border: rgba(255, 255, 255, 0.03);
+    --imsg-blue: #0a84ff;
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }

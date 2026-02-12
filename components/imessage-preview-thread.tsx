@@ -92,7 +92,8 @@ export function IMessagePreviewThread({
     };
   }, [hasEnteredView]);
 
-  const showTypingBubble = phase === "typing-link" || phase === "typing-followup";
+  const showFirstTypingBubble = phase === "typing-link";
+  const showSecondTypingBubble = phase === "typing-followup";
   const showLinkBubble = phase === "link" || phase === "typing-followup" || phase === "followup";
   const showFollowupOutgoing = phase === "followup";
 
@@ -109,7 +110,7 @@ export function IMessagePreviewThread({
         </div>
       </div>
       <IMessageTimestamp />
-      <div className={`imessage-bubble outgoing typing-bubble ${showTypingBubble ? "is-active" : "is-hidden"}`} aria-hidden="true">
+      <div className={`imessage-bubble outgoing typing-bubble ${showFirstTypingBubble ? "is-active" : "is-hidden"}`} aria-hidden="true">
         <span className="typing-dot" />
         <span className="typing-dot" />
         <span className="typing-dot" />
@@ -131,6 +132,11 @@ export function IMessagePreviewThread({
             <span>{previewDomain}</span>
           </div>
         </a>
+      </div>
+      <div className={`imessage-bubble outgoing typing-bubble ${showSecondTypingBubble ? "is-active" : "is-hidden"}`} aria-hidden="true">
+        <span className="typing-dot" />
+        <span className="typing-dot" />
+        <span className="typing-dot" />
       </div>
       <div className={`imessage-bubble outgoing followup-outgoing-bubble ${showFollowupOutgoing ? "is-visible" : "is-hidden"}`}>
         {OUTGOING_INVITE_MESSAGE}
