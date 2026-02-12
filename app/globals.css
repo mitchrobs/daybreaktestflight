@@ -183,6 +183,8 @@ main {
 }
 
 .imessage-screen {
+  display: grid;
+  gap: 10px;
   align-content: start;
   border: 0;
   border-radius: 0;
@@ -192,6 +194,14 @@ main {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+.imessage-heading {
+  font-family: var(--font-sora), sans-serif;
+  font-size: clamp(0.95rem, 3.3vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .imessage-thread {
@@ -213,6 +223,10 @@ main {
   background: #e9e9eb;
   color: #1c1c1e;
   border-top-left-radius: 8px;
+}
+
+.imessage-bubble.score-bubble {
+  white-space: pre-line;
 }
 
 .imessage-timestamp {
@@ -237,9 +251,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  opacity: 0;
-  transform: translateX(-14px);
-  animation: typing-bubble-in-out 0.95s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: typing-bubble-pulse 1.8s ease-in-out infinite;
 }
 
 .typing-dot {
@@ -265,8 +277,11 @@ main {
   padding: 0;
   overflow: hidden;
   opacity: 0;
-  transform: translateX(-26px);
-  animation: outgoing-send-in 0.55s cubic-bezier(0.17, 0.84, 0.44, 1) 0.9s forwards;
+  transform: translateX(-46px);
+}
+
+.imessage-thread.is-animating .imessage-bubble.link-bubble {
+  animation: outgoing-send-in 1.1s cubic-bezier(0.2, 0.86, 0.35, 1) forwards;
 }
 
 .imessage-link-card {
@@ -279,7 +294,7 @@ main {
 }
 
 .imessage-link-image-wrap {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1200 / 630;
   background: #d6d6d6;
 }
 
@@ -529,7 +544,7 @@ main {
 @keyframes outgoing-send-in {
   0% {
     opacity: 0;
-    transform: translateX(-26px);
+    transform: translateX(-46px);
   }
 
   100% {
@@ -538,25 +553,20 @@ main {
   }
 }
 
-@keyframes typing-bubble-in-out {
+@keyframes typing-bubble-pulse {
   0% {
-    opacity: 0;
-    transform: translateX(-14px);
-  }
-
-  18% {
-    opacity: 1;
+    opacity: 0.76;
     transform: translateX(0);
   }
 
-  70% {
+  50% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(1px);
   }
 
   100% {
-    opacity: 0;
-    transform: translateX(6px);
+    opacity: 0.76;
+    transform: translateX(0);
   }
 }
 
@@ -576,9 +586,6 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .imessage-bubble.link-bubble {
     animation: none;
-  }
-
-  .imessage-bubble.link-bubble {
     opacity: 1;
     transform: none;
   }

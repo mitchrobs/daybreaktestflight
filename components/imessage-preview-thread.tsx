@@ -1,0 +1,118 @@
+"use client";
+
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
+import { IMessageTimestamp } from "@/components/imessage-timestamp";
+
+type IMessagePreviewThreadProps = {
+  previewInviteUrl: string;
+  previewImageUrl: string;
+  previewTitle: string;
+  previewDomain: string;
+};
+
+const SCORE_MESSAGE = "#106 3/6\n⬛⬛🟨⬛⬛\n⬛🟩⬛⬛⬛\n🟩🟩🟩🟩🟩";
+
+type AnimationPhase = "idle" | "typing" | "link";
+
+export function IMessagePreviewThread({
+  previewInviteUrl,
+  previewImageUrl,
+  previewTitle,
+  previewDomain
+}: IMessagePreviewThreadProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [hasEnteredView, setHasEnteredView] = useState(false);
+  const [phase, setPhase] = useState<AnimationPhase>("idle");
+
+  useEffect(() => {
+    if (hasEnteredView) {
+      return;
+    }
+
+    const node = containerRef.current;
+    if (!node || typeof window === "undefined") {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      setHasEnteredView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setHasEnteredView(true);
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -12% 0px"
+      }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [hasEnteredView]);
+
+  useEffect(() => {
+    if (!hasEnteredView || typeof window === "undefined") {
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      setPhase("link");
+      return;
+    }
+
+    setPhase("typing");
+    const timer = window.setTimeout(() => {
+      setPhase("link");
+    }, 2200);
+
+    return () => window.clearTimeout(timer);
+  }, [hasEnteredView]);
+
+  return (
+    <div ref={containerRef} className={`imessage-thread ${phase === "idle" ? "is-idle" : "is-animating"}`}>
+      <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
+      <IMessageTimestamp />
+
+      {phase === "typing" ? (
+        <div className="imessage-bubble outgoing typing-bubble" aria-hidden="true">
+          <span className="typing-dot" />
+          <span className="typing-dot" />
+          <span className="typing-dot" />
+        </div>
+      ) : null}
+
+      {phase === "link" ? (
+        <div className="imessage-bubble outgoing link-bubble">
+          <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
+            <div className="imessage-link-image-wrap">
+              <Image
+                src={previewImageUrl}
+                alt={previewTitle}
+                width={1200}
+                height={630}
+                className="imessage-link-image-actual"
+                unoptimized
+              />
+            </div>
+            <div className="imessage-link-meta">
+              <strong>{previewTitle}</strong>
+              <span>{previewDomain}</span>
+            </div>
+          </a>
+        </div>
+      ) : null}
+    </div>
+  );
+}

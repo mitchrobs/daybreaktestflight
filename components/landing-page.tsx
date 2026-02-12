@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { IMessageTimestamp } from "@/components/imessage-timestamp";
+import { IMessagePreviewThread } from "@/components/imessage-preview-thread";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buildPreviewImageUrl, buildPreviewInviteUrl, getPreviewDomain } from "@/lib/imessage-preview";
 
@@ -58,34 +57,13 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
             <WaitlistForm referralCode={referralCode} />
 
             <article className="imessage-screen" aria-label="iMessage invite preview">
-              <div className="imessage-thread">
-                <div className="imessage-bubble incoming">Drop your NYT score.</div>
-                <IMessageTimestamp />
-                <div className="imessage-bubble outgoing typing-bubble" aria-hidden="true">
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                </div>
-                <div className="imessage-bubble outgoing link-bubble">
-                  <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
-                    <div className="imessage-link-image-wrap">
-                      <Image
-                        src={previewImageUrl}
-                        alt={previewTitle}
-                        width={1200}
-                        height={1200}
-                        className="imessage-link-image-actual"
-                        unoptimized
-                      />
-                    </div>
-                    <div className="imessage-link-meta">
-                      <strong>{previewTitle}</strong>
-                      <span>{previewDomain}</span>
-                    </div>
-                  </a>
-                </div>
-                <div className="imessage-bubble incoming">4 guesses is elite.</div>
-              </div>
+              <h2 className="imessage-heading">Import your games group chat in one click</h2>
+              <IMessagePreviewThread
+                previewInviteUrl={previewInviteUrl}
+                previewImageUrl={previewImageUrl}
+                previewTitle={previewTitle}
+                previewDomain={previewDomain}
+              />
             </article>
           </div>
         </section>

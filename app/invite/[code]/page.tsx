@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LandingPage } from "@/components/landing-page";
 import { ReferralViewTracker } from "@/components/referral-view-tracker";
 import { buildInviteMetadataValues } from "@/lib/invite-meta";
+import { INVITE_OG_DIMENSIONS } from "@/lib/og";
 import { getInviterByCode } from "@/lib/waitlist-repo";
 
 type InvitePageParams = {
@@ -31,8 +32,8 @@ export async function generateMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 1200,
+          width: INVITE_OG_DIMENSIONS.width,
+          height: INVITE_OG_DIMENSIONS.height,
           alt: title
         }
       ]
