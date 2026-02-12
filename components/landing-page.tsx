@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { WaitlistForm } from "@/components/waitlist-form";
 
@@ -7,8 +8,6 @@ type LandingPageProps = {
 };
 
 export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
-  const inviteLine = inviterName ? `${inviterName} invited you to Daybreak.` : "Invite-only TestFlight access.";
-
   return (
     <div className="landing-shell">
       <header className="topbar">
@@ -47,32 +46,26 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
         </section>
 
         <section className="visuals">
-          <div className="proof-strip">
-            <span>{inviteLine}</span>
-            <span>Weekly TestFlight waves</span>
-            <span>+5 per confirmed referral</span>
-          </div>
-
           <div className="visual-grid">
-            <article className="screen invitation-screen">
+            <article className="screen imessage-screen" aria-label="iMessage invite preview">
               <div className="screen-header">iMessage invite preview</div>
-              <div className="preview-bubble-title">{inviterName ? `${inviterName} invited you` : "Your name invited them"}</div>
-              <p className="screen-note">Bring your NYT Games group chat to Daybreak.</p>
-              <div className="screen-item">
-                <span>Submit signup</span>
-                <span className="time">Now</span>
+              <div className="imessage-header">
+                <span className="imessage-back" aria-hidden="true">
+                  Messages
+                </span>
+                <strong>NYT Games Group</strong>
               </div>
-              <div className="screen-item">
-                <span>Confirm email</span>
-                <span className="time">~1 min</span>
-              </div>
-              <div className="screen-item">
-                <span>Share invite link</span>
-                <span className="time">Instant</span>
-              </div>
-              <div className="screen-item">
-                <span>Climb queue</span>
-                <span className="time">+5</span>
+              <div className="imessage-thread">
+                <div className="imessage-bubble incoming">Wordle 969 4/6. Needed every row.</div>
+                <div className="imessage-bubble incoming alt">Connections: purple cooked me today.</div>
+                <div className="imessage-bubble typing" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="imessage-bubble outgoing">
+                  I&apos;m trying Daybreak. Join me and share your NYT puzzle results here too.
+                </div>
               </div>
             </article>
 
