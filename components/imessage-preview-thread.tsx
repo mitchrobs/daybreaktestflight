@@ -85,10 +85,10 @@ export function IMessagePreviewThread({
     <div ref={containerRef} className="imessage-thread">
       <div className="imessage-incoming-row">
         <div className="imessage-contact-mini" aria-hidden="true">
-          <span className="imessage-contact-avatar">🙂</span>
+          <span className="imessage-contact-avatar">SR</span>
         </div>
         <div className="imessage-incoming-stack">
-          <span className="imessage-contact-name">Maya</span>
+          <span className="imessage-contact-name">Sam</span>
           <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
           <div className="imessage-bubble incoming followup-bubble">{FOLLOW_UP_MESSAGE}</div>
         </div>

@@ -44,7 +44,7 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("Today");
     expect(markup).toContain("typing-bubble");
     expect(markup).toContain("imessage-contact-avatar");
-    expect(markup).toContain("Maya");
+    expect(markup).toContain("Sam");
     expect(markup).not.toContain("4 guesses is elite.");
     expect(markup).not.toContain("Daybreak is a calm daily ritual");
     expect(markup).not.toContain("How It Works");

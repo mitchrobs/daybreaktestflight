@@ -9,9 +9,9 @@
   --line-soft: rgba(15, 17, 21, 0.06);
   --accent: #2276ff;
   --accent-soft: rgba(34, 118, 255, 0.14);
-  --imsg-canvas: #e7eaf0;
-  --imsg-surface: #f8f9fc;
-  --imsg-border: rgba(17, 18, 22, 0.1);
+  --imsg-canvas: #f2f2f7;
+  --imsg-surface: #ffffff;
+  --imsg-border: rgba(60, 60, 67, 0.2);
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
   --cta-g3: #2f6fff;
@@ -544,15 +544,17 @@ main {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: #1c1c1e;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
   background:
-    radial-gradient(68% 68% at 28% 24%, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
-    linear-gradient(140deg, #ffd56f 0%, #ff88b8 48%, #8dd2ff 100%);
+    radial-gradient(72% 72% at 28% 24%, #f7e77a 0%, rgba(247, 231, 122, 0) 100%),
+    linear-gradient(165deg, #f6d04f 0%, #efb936 100%);
+  border: 1px solid rgba(180, 132, 16, 0.65);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.68),
-    0 1px 3px rgba(18, 20, 24, 0.16);
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 1px 2px rgba(0, 0, 0, 0.16);
 }
 
 .imessage-incoming-stack {
@@ -975,9 +977,9 @@ main {
     --line: rgba(242, 244, 248, 0.18);
     --line-soft: rgba(242, 244, 248, 0.1);
     --accent-soft: rgba(47, 111, 255, 0.2);
-    --imsg-canvas: #12151c;
-    --imsg-surface: #1b1f27;
-    --imsg-border: rgba(255, 255, 255, 0.12);
+    --imsg-canvas: #000000;
+    --imsg-surface: #000000;
+    --imsg-border: rgba(255, 255, 255, 0.11);
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }
@@ -1054,9 +1056,10 @@ main {
 
   .imessage-contact-avatar {
     background:
-      radial-gradient(68% 68% at 28% 24%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%),
-      linear-gradient(140deg, #ffc768 0%, #ff73b0 48%, #7abaff 100%);
-    color: #1c1c1e;
+      radial-gradient(72% 72% at 28% 24%, rgba(247, 231, 122, 0.95) 0%, rgba(247, 231, 122, 0) 100%),
+      linear-gradient(165deg, #e2b53b 0%, #b88621 100%);
+    border-color: rgba(234, 187, 66, 0.64);
+    color: #ffffff;
   }
 
   .imessage-timestamp {
