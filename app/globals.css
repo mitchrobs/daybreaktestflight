@@ -462,49 +462,50 @@ main {
 }
 
 .imessage-screen-shell {
-  padding: 12px;
+  padding: 10px;
 }
 
 .imessage-screen {
-  gap: 14px;
+  gap: 10px;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
 
 .imessage-intro {
   display: grid;
-  gap: 7px;
+  gap: 5px;
 }
 
 .imessage-kicker {
   color: var(--muted);
-  font-size: 0.67rem;
+  font-size: 0.63rem;
   text-transform: uppercase;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.2em;
 }
 
 .imessage-heading {
   font-family: var(--font-sora), sans-serif;
-  font-size: clamp(1.34rem, 5vw, 2.3rem);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-size: clamp(0.98rem, 2.9vw, 1.12rem);
+  line-height: 1.24;
+  letter-spacing: -0.01em;
 }
 
 .imessage-subheader {
-  color: var(--ink-soft);
-  font-size: 0.97rem;
-  line-height: 1.5;
-  max-width: 60ch;
+  color: #2d3139;
+  font-size: 0.84rem;
+  line-height: 1.42;
+  max-width: 58ch;
 }
 
 .imessage-thread-shell {
-  border-radius: 16px;
-  padding: 11px;
-  background: #f5f6f8;
+  border: 1px solid rgba(19, 20, 23, 0.08);
+  border-radius: 14px;
+  padding: 9px;
+  background: #fafafb;
 }
 
 .imessage-thread {
   display: grid;
-  gap: 7px;
+  gap: 8px;
   padding: 2px 0;
 }
 
@@ -542,19 +543,18 @@ main {
   background: #e9e9eb;
   color: #1c1c1e;
   border-top-right-radius: 8px;
-  padding: 6px 8px;
-  font-size: 0.69rem;
-  line-height: 1.23;
+  padding: 9px 11px;
+  font-size: 0.86rem;
 }
 
 .imessage-bubble.typing-bubble {
-  width: 28px;
-  height: 18px;
-  padding: 0 6px;
+  width: 40px;
+  height: 26px;
+  padding: 0 8px;
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .imessage-bubble.typing-bubble.is-active {
@@ -567,8 +567,8 @@ main {
 }
 
 .typing-dot {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: rgba(28, 28, 30, 0.48);
   animation: typing-dot-bounce 0.72s ease-in-out infinite;
@@ -582,24 +582,11 @@ main {
   animation-delay: 0.22s;
 }
 
-.imessage-bubble.note-bubble {
-  max-width: min(62vw, 180px);
-}
-
-.imessage-bubble.note-bubble.is-hidden {
-  opacity: 0;
-  transform: translateX(-36px);
-}
-
-.imessage-bubble.note-bubble.is-visible {
-  animation: outgoing-send-in 0.92s cubic-bezier(0.2, 0.86, 0.35, 1) forwards;
-}
-
 .imessage-bubble.link-bubble {
   display: grid;
   gap: 0;
-  width: min(66vw, 224px);
-  max-width: min(66vw, 224px);
+  width: min(82vw, 320px);
+  max-width: min(82vw, 320px);
   padding: 0;
   overflow: hidden;
   background: transparent;
@@ -607,7 +594,7 @@ main {
 
 .imessage-bubble.link-bubble.is-hidden {
   opacity: 0;
-  transform: translateX(-32px);
+  transform: translateX(-46px);
 }
 
 .imessage-bubble.link-bubble.is-visible {
@@ -616,10 +603,10 @@ main {
 
 .imessage-link-card {
   display: block;
-  border-radius: 15px 15px 8px 15px;
+  border-radius: 17px 17px 8px 17px;
   overflow: hidden;
   background: #e9e9eb;
-  border: 1px solid rgba(17, 17, 17, 0.05);
+  border: 1px solid rgba(17, 17, 17, 0.06);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
 }
 
@@ -636,7 +623,7 @@ main {
 }
 
 .imessage-link-meta {
-  padding: 5px 6px 6px;
+  padding: 6px 8px 7px;
   display: grid;
   gap: 1px;
   color: #131313;
@@ -644,13 +631,13 @@ main {
 }
 
 .imessage-link-meta strong {
-  font-size: 0.58rem;
+  font-size: 0.78rem;
   line-height: 1.2;
   font-weight: 600;
 }
 
 .imessage-link-meta span {
-  font-size: 0.52rem;
+  font-size: 0.66rem;
   line-height: 1.16;
   color: rgba(19, 19, 19, 0.56);
 }
@@ -877,7 +864,6 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .imessage-bubble.note-bubble.is-visible,
   .imessage-bubble.link-bubble.is-visible,
   .imessage-bubble.typing-bubble,
   .typing-dot,
@@ -889,7 +875,6 @@ main {
     transition: none;
   }
 
-  .imessage-bubble.note-bubble.is-visible,
   .imessage-bubble.link-bubble.is-visible {
     opacity: 1;
     transform: none;
@@ -955,6 +940,11 @@ main {
     background: var(--surface-soft);
   }
 
+  .imessage-thread-shell {
+    background: rgba(242, 243, 245, 0.03);
+    border-color: var(--line-soft);
+  }
+
   .field,
   .share-row input,
   .badge-pill {
@@ -969,12 +959,20 @@ main {
 
   .imessage-bubble.incoming,
   .imessage-bubble.outgoing {
-    background: rgba(118, 118, 128, 0.42);
+    background: rgba(118, 118, 128, 0.36);
     color: #f2f2f7;
   }
 
+  .imessage-subheader {
+    color: rgba(242, 242, 247, 0.7);
+  }
+
+  .imessage-timestamp {
+    color: rgba(242, 242, 247, 0.55);
+  }
+
   .typing-dot {
-    background: rgba(242, 242, 247, 0.62);
+    background: rgba(242, 242, 247, 0.58);
   }
 
   .imessage-link-card {
@@ -992,7 +990,7 @@ main {
   }
 
   .imessage-link-meta span {
-    color: rgba(237, 244, 255, 0.68);
+    color: rgba(237, 244, 255, 0.65);
   }
 }
 

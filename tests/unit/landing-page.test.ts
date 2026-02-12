@@ -29,15 +29,14 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("Whodunit");
     expect(markup).toContain("Trivia");
     expect(markup).toContain("Mini Crossword");
-    expect(markup).toContain("Instantly import your games group chat");
-    expect(markup).toContain("Daybreak groups share the right game scores to the right friends.");
+    expect(markup).toContain("Import your games group chat in one click");
+    expect(markup).toContain("Daybreak groups share your daily game results with your friends.");
     expect(markup).toContain("#106 3/6");
     expect(markup).toContain("⬛⬛🟨⬛⬛");
     expect(markup).toContain("⬛🟩⬛⬛⬛");
     expect(markup).toContain("🟩🟩🟩🟩🟩");
     expect(markup).toContain("Today");
     expect(markup).toContain("typing-bubble");
-    expect(markup).toContain("made a group for us on daybreak)");
     expect(markup).not.toContain("4 guesses is elite.");
     expect(markup).not.toContain("Daybreak is a calm daily ritual");
     expect(markup).not.toContain("How It Works");

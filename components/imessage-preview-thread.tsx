@@ -12,9 +12,8 @@ type IMessagePreviewThreadProps = {
 };
 
 const SCORE_MESSAGE = "#106 3/6\n⬛⬛🟨⬛⬛\n⬛🟩⬛⬛⬛\n🟩🟩🟩🟩🟩";
-const OUTGOING_GROUP_MESSAGE = "made a group for us on daybreak)";
 
-type AnimationPhase = "idle" | "typing-message" | "message" | "typing-link" | "link";
+type AnimationPhase = "idle" | "typing" | "link";
 
 export function IMessagePreviewThread({
   previewInviteUrl,
@@ -73,39 +72,22 @@ export function IMessagePreviewThread({
       return;
     }
 
-    setPhase("typing-message");
+    setPhase("typing");
+    const timer = window.setTimeout(() => {
+      setPhase("link");
+    }, 2200);
 
-    const timers = [
-      window.setTimeout(() => setPhase("message"), 950),
-      window.setTimeout(() => setPhase("typing-link"), 1700),
-      window.setTimeout(() => setPhase("link"), 2550)
-    ];
-
-    return () => {
-      for (const timer of timers) {
-        window.clearTimeout(timer);
-      }
-    };
+    return () => window.clearTimeout(timer);
   }, [hasEnteredView]);
 
   return (
     <div ref={containerRef} className="imessage-thread">
       <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
       <IMessageTimestamp />
-      <div
-        className={`imessage-bubble outgoing typing-bubble ${
-          phase === "typing-message" || phase === "typing-link" ? "is-active" : "is-hidden"
-        }`}
-        aria-hidden="true">
+      <div className={`imessage-bubble outgoing typing-bubble ${phase === "typing" ? "is-active" : "is-hidden"}`} aria-hidden="true">
         <span className="typing-dot" />
         <span className="typing-dot" />
         <span className="typing-dot" />
-      </div>
-      <div
-        className={`imessage-bubble outgoing note-bubble ${
-          phase === "message" || phase === "typing-link" || phase === "link" ? "is-visible" : "is-hidden"
-        }`}>
-        {OUTGOING_GROUP_MESSAGE}
       </div>
       <div className={`imessage-bubble outgoing link-bubble ${phase === "link" ? "is-visible" : "is-hidden"}`}>
         <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
