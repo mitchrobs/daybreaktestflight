@@ -12,6 +12,7 @@ type IMessagePreviewThreadProps = {
 };
 
 const SCORE_MESSAGE = "#106 3/6\n⬛⬛🟨⬛⬛\n⬛🟩⬛⬛⬛\n🟩🟩🟩🟩🟩";
+const FOLLOW_UP_MESSAGE = "ngl I got lucky today";
 
 type AnimationPhase = "idle" | "typing" | "link";
 
@@ -84,11 +85,12 @@ export function IMessagePreviewThread({
     <div ref={containerRef} className="imessage-thread">
       <div className="imessage-incoming-row">
         <div className="imessage-contact-mini" aria-hidden="true">
-          <span className="imessage-contact-avatar">M</span>
+          <span className="imessage-contact-avatar">🙂</span>
         </div>
-        <div className="imessage-incoming-message">
+        <div className="imessage-incoming-stack">
           <span className="imessage-contact-name">Maya</span>
           <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
+          <div className="imessage-bubble incoming followup-bubble">{FOLLOW_UP_MESSAGE}</div>
         </div>
       </div>
       <IMessageTimestamp />

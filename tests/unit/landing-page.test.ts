@@ -40,6 +40,7 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("⬛⬛🟨⬛⬛");
     expect(markup).toContain("⬛🟩⬛⬛⬛");
     expect(markup).toContain("🟩🟩🟩🟩🟩");
+    expect(markup).toContain("ngl I got lucky today");
     expect(markup).toContain("Today");
     expect(markup).toContain("typing-bubble");
     expect(markup).toContain("imessage-contact-avatar");

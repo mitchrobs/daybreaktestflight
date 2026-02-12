@@ -528,14 +528,14 @@ main {
 
 .imessage-incoming-row {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 7px;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 6px;
   align-items: start;
 }
 
 .imessage-contact-mini {
   width: 26px;
-  padding-top: 2px;
+  padding-top: 13px;
 }
 
 .imessage-contact-avatar {
@@ -544,20 +544,20 @@ main {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #1c1c1e;
   background:
-    radial-gradient(68% 68% at 28% 24%, #f0f5ff 0%, rgba(240, 245, 255, 0) 100%),
-    linear-gradient(140deg, #8c6bff 0%, #4da4ff 46%, #44d6a2 100%);
+    radial-gradient(68% 68% at 28% 24%, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(140deg, #ffd56f 0%, #ff88b8 48%, #8dd2ff 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    0 1px 4px rgba(18, 20, 24, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 1px 3px rgba(18, 20, 24, 0.16);
 }
 
-.imessage-incoming-message {
+.imessage-incoming-stack {
   display: grid;
-  gap: 2px;
+  gap: 3px;
   min-width: 0;
 }
 
@@ -588,6 +588,16 @@ main {
   white-space: pre;
   font-size: 0.93rem;
   line-height: 1.17;
+  border-bottom-left-radius: 8px;
+}
+
+.imessage-bubble.followup-bubble {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 17px;
+  font-size: 0.84rem;
+  line-height: 1.23;
+  padding: 9px 11px;
+  max-width: min(82vw, 248px);
 }
 
 .imessage-timestamp {
@@ -1044,8 +1054,9 @@ main {
 
   .imessage-contact-avatar {
     background:
-      radial-gradient(68% 68% at 28% 24%, rgba(238, 243, 255, 0.55) 0%, rgba(238, 243, 255, 0) 100%),
-      linear-gradient(140deg, #8f72ff 0%, #4b8eff 46%, #2fbf94 100%);
+      radial-gradient(68% 68% at 28% 24%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(140deg, #ffc768 0%, #ff73b0 48%, #7abaff 100%);
+    color: #1c1c1e;
   }
 
   .imessage-timestamp {
