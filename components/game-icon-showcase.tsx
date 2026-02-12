@@ -99,12 +99,20 @@ const gameRows: GameIconEntry[][] = [
   [gamesById.wordie, gamesById["mini-crossword"], gamesById["mini-sudoku"], gamesById.trivia]
 ];
 
-export function GameIconShowcase() {
+type GameIconShowcaseProps = {
+  embedded?: boolean;
+};
+
+export function GameIconShowcase({ embedded = false }: GameIconShowcaseProps) {
+  const Wrapper: "section" | "div" = embedded ? "div" : "section";
+  const titleId = embedded ? "games-title-embedded" : "games-title";
+  const className = embedded ? "games-showcase games-showcase--embedded" : "games-showcase";
+
   return (
-    <section className="games-showcase" aria-labelledby="games-title">
+    <Wrapper className={className} aria-labelledby={titleId}>
       <p className="section-kicker">Today in Gameshow</p>
       <div className="games-heading-row">
-        <h2 id="games-title">A lineup you&apos;ll open every day.</h2>
+        <h2 id={titleId}>A lineup you&apos;ll open every day.</h2>
         <p>Eight daily games in a compact lineup.</p>
       </div>
 
@@ -137,6 +145,6 @@ export function GameIconShowcase() {
           </div>
         ))}
       </div>
-    </section>
+    </Wrapper>
   );
 }

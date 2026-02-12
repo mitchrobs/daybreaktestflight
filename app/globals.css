@@ -9,6 +9,9 @@
   --line-soft: rgba(15, 17, 21, 0.06);
   --accent: #2276ff;
   --accent-soft: rgba(34, 118, 255, 0.14);
+  --imsg-canvas: #e7eaf0;
+  --imsg-surface: #f8f9fc;
+  --imsg-border: rgba(17, 18, 22, 0.1);
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
   --cta-g3: #2f6fff;
@@ -59,6 +62,7 @@ main {
 
 .topbar,
 .hero,
+.hero-games,
 .games-showcase,
 .steps,
 .early-access,
@@ -105,9 +109,20 @@ main {
   padding: clamp(22px, 4vw, 34px);
 }
 
+.hero-games {
+  padding: clamp(22px, 4vw, 34px);
+  display: grid;
+  gap: 14px;
+}
+
 .hero-inner {
   display: grid;
   gap: 14px;
+}
+
+.hero-games-copy {
+  display: grid;
+  gap: 12px;
 }
 
 .hero-eyebrow {
@@ -128,13 +143,6 @@ main {
   color: var(--ink-soft);
   max-width: 64ch;
   font-size: clamp(1rem, 2.3vw, 1.18rem);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 2px;
 }
 
 .cta {
@@ -224,11 +232,24 @@ main {
   gap: 12px;
 }
 
+.games-showcase--embedded {
+  padding: 12px;
+  gap: 8px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
 .section-kicker {
   color: #55679b;
   font-size: 0.67rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.games-showcase--embedded .section-kicker {
+  color: var(--muted);
+  font-size: 0.62rem;
 }
 
 .games-heading-row {
@@ -245,6 +266,15 @@ main {
 .games-heading-row p {
   color: var(--ink-soft);
   font-size: 0.93rem;
+}
+
+.games-showcase--embedded .games-heading-row h2 {
+  font-size: clamp(1.08rem, 3.5vw, 1.56rem);
+  line-height: 1.12;
+}
+
+.games-showcase--embedded .games-heading-row p {
+  font-size: 0.82rem;
 }
 
 .games-grid-rows {
@@ -278,34 +308,34 @@ main {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 7px;
-  border-radius: 12px;
+  gap: 6px;
+  border-radius: 11px;
   background: var(--surface-soft);
-  padding: 7px 8px;
-  min-height: 58px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding: 6px 7px;
+  min-height: 54px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .game-icon-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   background: #ffffff;
-  box-shadow: 0 8px 16px rgba(14, 16, 20, 0.12);
+  box-shadow: 0 5px 11px rgba(14, 16, 20, 0.1);
 }
 
 .game-icon-tile {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   display: grid;
   place-items: center;
   color: #ffffff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 7px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 5px rgba(0, 0, 0, 0.11);
 }
 
 .game-icon-symbol {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
 }
 
 .tile-bridges {
@@ -347,7 +377,7 @@ main {
 }
 
 .game-icon-meta strong {
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   line-height: 1.12;
   white-space: nowrap;
   overflow: hidden;
@@ -356,7 +386,7 @@ main {
 
 .game-icon-meta span {
   color: var(--muted);
-  font-size: 0.61rem;
+  font-size: 0.58rem;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -393,8 +423,7 @@ main {
 }
 
 .screen,
-.waitlist-card,
-.imessage-screen {
+.waitlist-card {
   border-radius: 18px;
   padding: 16px;
   background: var(--surface-soft);
@@ -462,11 +491,18 @@ main {
 }
 
 .imessage-screen-shell {
-  padding: 10px;
+  padding: 12px;
+  background: var(--imsg-canvas);
 }
 
 .imessage-screen {
+  display: grid;
   gap: 10px;
+  border: 1px solid var(--imsg-border);
+  border-radius: 16px;
+  padding: 14px;
+  background: var(--imsg-surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
 
@@ -497,10 +533,10 @@ main {
 }
 
 .imessage-thread-shell {
-  border: 1px solid rgba(19, 20, 23, 0.08);
+  border: 1px solid var(--imsg-border);
   border-radius: 14px;
   padding: 9px;
-  background: #fafafb;
+  background: var(--imsg-canvas);
 }
 
 .imessage-thread {
@@ -901,6 +937,9 @@ main {
     --line: rgba(242, 244, 248, 0.18);
     --line-soft: rgba(242, 244, 248, 0.1);
     --accent-soft: rgba(47, 111, 255, 0.2);
+    --imsg-canvas: #12151c;
+    --imsg-surface: #1b1f27;
+    --imsg-border: rgba(255, 255, 255, 0.12);
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }
@@ -920,6 +959,7 @@ main {
 
   .topbar,
   .hero,
+  .hero-games,
   .games-showcase,
   .steps,
   .early-access,
@@ -934,15 +974,19 @@ main {
 
   .game-icon-card,
   .waitlist-card,
-  .imessage-screen,
   .steps article,
   .confirm-state {
     background: var(--surface-soft);
   }
 
+  .imessage-screen {
+    background: var(--imsg-surface);
+    border-color: var(--imsg-border);
+  }
+
   .imessage-thread-shell {
-    background: rgba(242, 243, 245, 0.03);
-    border-color: var(--line-soft);
+    background: var(--imsg-canvas);
+    border-color: var(--imsg-border);
   }
 
   .field,

@@ -30,24 +30,38 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
           </section>
         ) : null}
 
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-inner">
+        <section className="hero-games" aria-labelledby="hero-title">
+          <div className="hero-games-copy">
             <p className="hero-eyebrow">Invite-only iOS beta</p>
             <h1 className="hero-title" id="hero-title">
               Smart games and puzzles that you&apos;ll look forward to each day.
             </h1>
 
-            <p className="hero-sub">Daily play, shared wins, and group-chat momentum with people you actually play with.</p>
-
-            <div className="hero-actions">
-              <a className="cta primary cta-glow" href="#waitlist">
-                Start Playing
-              </a>
-            </div>
+            <p className="hero-sub">Daily games, dynamic difficulty, and groups that stay in sync.</p>
           </div>
+
+          <GameIconShowcase embedded />
         </section>
 
-        <GameIconShowcase />
+        <section className="imessage-screen-shell">
+          <div className="visual-grid">
+            <article className="imessage-screen" aria-label="iMessage invite preview">
+              <div className="imessage-intro">
+                <h2 className="imessage-heading">Import your games group chat in one click</h2>
+                <p className="imessage-subheader">Daybreak groups share your daily game results with your friends.</p>
+              </div>
+
+              <div className="imessage-thread-shell">
+                <IMessagePreviewThread
+                  previewInviteUrl={previewInviteUrl}
+                  previewImageUrl={previewImageUrl}
+                  previewTitle={previewTitle}
+                  previewDomain={previewDomain}
+                />
+              </div>
+            </article>
+          </div>
+        </section>
 
         <section className="steps">
           <article>
@@ -77,27 +91,6 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
             submitLabel="Start Playing"
           />
         </section>
-
-        <section className="imessage-screen-shell">
-          <div className="visual-grid">
-            <article className="imessage-screen" aria-label="iMessage invite preview">
-              <div className="imessage-intro">
-                <h2 className="imessage-heading">Import your games group chat in one click</h2>
-                <p className="imessage-subheader">Daybreak groups share your daily game results with your friends.</p>
-              </div>
-
-              <div className="imessage-thread-shell">
-                <IMessagePreviewThread
-                  previewInviteUrl={previewInviteUrl}
-                  previewImageUrl={previewImageUrl}
-                  previewTitle={previewTitle}
-                  previewDomain={previewDomain}
-                />
-              </div>
-            </article>
-          </div>
-        </section>
-
       </main>
 
       <footer className="footer">

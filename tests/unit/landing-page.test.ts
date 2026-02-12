@@ -8,18 +8,22 @@ describe("landing page invite preview", () => {
   it("renders the refreshed landing flow while preserving iMessage thread behavior", () => {
     const markup = renderToStaticMarkup(createElement(LandingPage, { referralCode: "ABC123" }));
     const expectedDomain = getPreviewDomain(buildPreviewInviteUrl("ABC123"));
+    const heroGamesIndex = markup.indexOf("hero-games");
     const heroIndex = markup.indexOf("Smart games and puzzles that you&#x27;ll look forward to each day.");
     const gamesIndex = markup.indexOf("Today in Gameshow");
+    const previewIndex = markup.indexOf("imessage-thread");
     const stepsIndex = markup.indexOf("01 Join");
     const waitlistIndex = markup.indexOf("Early Access");
-    const previewIndex = markup.indexOf("imessage-thread");
     const incomingScoreIndex = markup.indexOf("#106 3/6");
     const outgoingPreviewIndex = markup.indexOf("link-bubble");
 
     expect(markup).not.toContain("ios-device-frame");
     expect(markup).not.toContain('class="screen-header">iMessage invite preview');
+    expect(markup).toContain("hero-games");
     expect(markup).toContain("Smart games and puzzles that you&#x27;ll look forward to each day.");
+    expect(markup).toContain("Daily games, dynamic difficulty, and groups that stay in sync.");
     expect(markup).toContain("Start Playing");
+    expect(markup).not.toContain("hero-actions");
     expect(markup).toContain("Today in Gameshow");
     expect(markup).toContain("Bridges");
     expect(markup).toContain("Barter");
@@ -42,12 +46,13 @@ describe("landing page invite preview", () => {
     expect(markup).not.toContain("How It Works");
     expect(markup).toContain("/api/og/invite/ABC123.png");
     expect(markup).toContain(expectedDomain);
+    expect(heroGamesIndex).toBeGreaterThan(-1);
     expect(heroIndex).toBeGreaterThan(-1);
-    expect(gamesIndex).toBeGreaterThan(heroIndex);
-    expect(stepsIndex).toBeGreaterThan(gamesIndex);
+    expect(gamesIndex).toBeGreaterThan(heroGamesIndex);
+    expect(previewIndex).toBeGreaterThan(gamesIndex);
+    expect(stepsIndex).toBeGreaterThan(previewIndex);
     expect(waitlistIndex).toBeGreaterThan(-1);
     expect(waitlistIndex).toBeGreaterThan(stepsIndex);
-    expect(previewIndex).toBeGreaterThan(waitlistIndex);
     expect(incomingScoreIndex).toBeGreaterThan(-1);
     expect(outgoingPreviewIndex).toBeGreaterThan(incomingScoreIndex);
   });
