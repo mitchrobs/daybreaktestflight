@@ -1,5 +1,5 @@
 :root {
-  --bg: #f4f4f5;
+  --bg: #ffffff;
   --surface: #ffffff;
   --surface-soft: #f2f3f5;
   --ink: #0f1115;
@@ -9,10 +9,9 @@
   --line-soft: rgba(15, 17, 21, 0.06);
   --accent: #2276ff;
   --accent-soft: rgba(34, 118, 255, 0.14);
-  --imsg-canvas: #e5e5ea;
-  --imsg-surface: #e5e5ea;
-  --imsg-border: rgba(60, 60, 67, 0.1);
-  --imsg-thread-bg: #e5e5ea;
+  --imsg-canvas: #ffffff;
+  --imsg-surface: #ffffff;
+  --imsg-thread-bg: #ffffff;
   --imsg-thread-border: rgba(60, 60, 67, 0.04);
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
@@ -39,10 +38,7 @@ body {
   color: var(--ink);
   line-height: 1.45;
   min-height: 100vh;
-  background:
-    radial-gradient(72% 45% at 0% -10%, rgba(34, 118, 255, 0.08), transparent 72%),
-    radial-gradient(56% 34% at 96% 4%, rgba(246, 31, 143, 0.06), transparent 82%),
-    linear-gradient(180deg, #f9f9fa 0%, #f1f2f3 58%, #ececef 100%);
+  background: var(--bg);
   padding: 18px 5vw 88px;
 }
 
@@ -114,6 +110,8 @@ main {
   padding: clamp(22px, 4vw, 34px);
   display: grid;
   gap: 14px;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero-inner {
@@ -520,7 +518,7 @@ main {
 .imessage-screen {
   display: grid;
   gap: 10px;
-  border: 1px solid var(--imsg-border);
+  border: 0;
   border-radius: 16px;
   padding: 14px;
   background: var(--imsg-surface);
@@ -555,7 +553,7 @@ main {
 }
 
 .imessage-thread-shell {
-  border: 1px solid var(--imsg-thread-border);
+  border: 0;
   border-radius: 14px;
   padding: 9px;
   background: var(--imsg-thread-bg);
@@ -1009,7 +1007,7 @@ main {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1013;
+    --bg: #000000;
     --surface: #17191e;
     --surface-soft: #20232b;
     --ink: #f2f4f8;
@@ -1018,20 +1016,12 @@ main {
     --line: rgba(242, 244, 248, 0.18);
     --line-soft: rgba(242, 244, 248, 0.1);
     --accent-soft: rgba(47, 111, 255, 0.2);
-    --imsg-canvas: #1c1c1e;
-    --imsg-surface: #1c1c1e;
-    --imsg-border: rgba(255, 255, 255, 0.08);
-    --imsg-thread-bg: #1c1c1e;
+    --imsg-canvas: #000000;
+    --imsg-surface: #000000;
+    --imsg-thread-bg: #000000;
     --imsg-thread-border: rgba(255, 255, 255, 0.03);
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
-  }
-
-  body {
-    background:
-      radial-gradient(72% 45% at 0% -10%, rgba(47, 111, 255, 0.2), transparent 72%),
-      radial-gradient(56% 34% at 96% 4%, rgba(246, 31, 143, 0.16), transparent 82%),
-      linear-gradient(180deg, #15161a 0%, #101115 52%, #0d0e12 100%);
   }
 
   .cta.primary {
@@ -1042,7 +1032,6 @@ main {
 
   .topbar,
   .hero,
-  .hero-games,
   .games-showcase,
   .early-access,
   .footer {
@@ -1061,12 +1050,12 @@ main {
 
   .imessage-screen {
     background: var(--imsg-surface);
-    border-color: var(--imsg-border);
+    border: 0;
   }
 
   .imessage-thread-shell {
     background: var(--imsg-thread-bg);
-    border-color: var(--imsg-thread-border);
+    border: 0;
   }
 
   .field,
@@ -1132,6 +1121,11 @@ main {
 
   .imessage-link-meta span {
     color: rgba(237, 244, 255, 0.65);
+  }
+
+  .hero-games {
+    box-shadow: none;
+    background: transparent;
   }
 }
 
