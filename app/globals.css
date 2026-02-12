@@ -268,6 +268,7 @@ main {
   display: grid;
   gap: 8px;
   background: transparent;
+  background-image: none;
 }
 
 .games-row {
@@ -281,6 +282,7 @@ main {
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
   background: transparent;
+  background-image: none;
 }
 
 .games-row::-webkit-scrollbar {
@@ -288,10 +290,11 @@ main {
 }
 
 .game-icon-card {
+  --card-c1: #8b3dff;
+  --card-c2: #ff4f9f;
+  --card-c3: #2276ff;
   flex: 0 0 clamp(108px, 32vw, 124px);
   scroll-snap-align: start;
-  position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -302,31 +305,15 @@ main {
   padding: 10px;
   min-height: 94px;
   color: #ffffff;
-  background:
-    radial-gradient(86% 74% at 88% 10%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 62%),
-    radial-gradient(76% 62% at 8% 104%, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 74%),
-    linear-gradient(138deg, #377eff 0%, var(--accent) 52%, #6ad7ff 100%);
-  box-shadow: 0 8px 16px rgba(16, 22, 39, 0.16);
+  background: linear-gradient(138deg, var(--card-c1) 0%, var(--card-c2) 74%, var(--card-c3) 100%);
+  box-shadow: 0 8px 15px rgba(16, 22, 39, 0.14);
   transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
-}
-
-.game-icon-card::before {
-  content: "";
-  position: absolute;
-  right: -12px;
-  top: -12px;
-  width: 64px;
-  height: 64px;
-  border-radius: 999px;
-  pointer-events: none;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
-  opacity: 0.68;
 }
 
 .game-icon-card:hover {
   transform: translateY(-1px);
-  filter: saturate(1.05);
-  box-shadow: 0 12px 20px rgba(16, 22, 39, 0.2);
+  filter: saturate(1.02);
+  box-shadow: 0 10px 18px rgba(16, 22, 39, 0.18);
 }
 
 .game-icon-tile {
@@ -344,70 +331,57 @@ main {
 }
 
 .game-icon-symbol {
-  width: 28px;
-  height: 28px;
-  filter: drop-shadow(0 2px 4px rgba(12, 20, 34, 0.24));
-}
-
-.game-icon-card > * {
-  position: relative;
-  z-index: 1;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 1px 2px rgba(12, 20, 34, 0.22));
 }
 
 .game-icon-card[data-game="moji-mash"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 60%),
-    radial-gradient(72% 64% at 8% 102%, rgba(162, 78, 255, 0.48), rgba(162, 78, 255, 0) 72%),
-    linear-gradient(138deg, #4d87ff 0%, var(--accent) 52%, #ff6ac2 100%);
+  --card-c1: #8b3dff;
+  --card-c2: #ff4f9f;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="bridges"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0) 62%),
-    radial-gradient(72% 64% at 8% 102%, rgba(89, 188, 255, 0.44), rgba(89, 188, 255, 0) 72%),
-    linear-gradient(138deg, #3f82ff 0%, var(--accent) 54%, #58cfff 100%);
+  --card-c1: #ff7b45;
+  --card-c2: #f7b733;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="whodunit"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 60%),
-    radial-gradient(72% 64% at 8% 102%, rgba(103, 129, 180, 0.5), rgba(103, 129, 180, 0) 72%),
-    linear-gradient(138deg, #3a79ff 0%, var(--accent) 54%, #6f84b0 100%);
+  --card-c1: #6c4fa8;
+  --card-c2: #b070c9;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="barter"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 61%),
-    radial-gradient(72% 64% at 8% 102%, rgba(87, 208, 169, 0.48), rgba(87, 208, 169, 0) 70%),
-    linear-gradient(138deg, #3f81ff 0%, var(--accent) 54%, #42c9a1 100%);
+  --card-c1: #1ebf7a;
+  --card-c2: #73d89b;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="wordie"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0) 62%),
-    radial-gradient(72% 64% at 8% 102%, rgba(113, 215, 255, 0.42), rgba(113, 215, 255, 0) 72%),
-    linear-gradient(138deg, #4e8eff 0%, var(--accent) 50%, #66ceff 100%);
+  --card-c1: #ff6f61;
+  --card-c2: #ff9a6b;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="mini-crossword"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 62%),
-    radial-gradient(72% 64% at 8% 102%, rgba(76, 196, 214, 0.48), rgba(76, 196, 214, 0) 72%),
-    linear-gradient(138deg, #478bff 0%, var(--accent) 53%, #2eb1ca 100%);
+  --card-c1: #22b7a6;
+  --card-c2: #58d1c5;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="mini-sudoku"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0) 60%),
-    radial-gradient(72% 64% at 8% 102%, rgba(248, 189, 84, 0.5), rgba(248, 189, 84, 0) 72%),
-    linear-gradient(138deg, #3b7fff 0%, var(--accent) 53%, #eeaa3f 100%);
+  --card-c1: #ff9f1c;
+  --card-c2: #ffd166;
+  --card-c3: #2276ff;
 }
 
 .game-icon-card[data-game="trivia"] {
-  background:
-    radial-gradient(84% 74% at 90% 8%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 60%),
-    radial-gradient(72% 64% at 8% 102%, rgba(255, 142, 98, 0.5), rgba(255, 142, 98, 0) 72%),
-    linear-gradient(138deg, #4689ff 0%, var(--accent) 55%, #f46f48 100%);
+  --card-c1: #ff5f6d;
+  --card-c2: #ffc371;
+  --card-c3: #2276ff;
 }
 
 .game-icon-meta {
@@ -1102,10 +1076,14 @@ main {
     color: var(--ink);
   }
 
+  .game-icon-card {
+    filter: saturate(0.9) brightness(0.95);
+    box-shadow: 0 9px 17px rgba(0, 0, 0, 0.32);
+  }
+
   .game-icon-card:hover {
-    box-shadow:
-      0 18px 34px rgba(0, 0, 0, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    filter: saturate(0.96) brightness(0.97);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.34);
   }
 
   .imessage-bubble.incoming,
