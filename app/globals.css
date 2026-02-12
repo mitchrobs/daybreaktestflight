@@ -9,11 +9,11 @@
   --line-soft: rgba(15, 17, 21, 0.06);
   --accent: #2276ff;
   --accent-soft: rgba(34, 118, 255, 0.14);
-  --imsg-canvas: #f2f2f7;
-  --imsg-surface: #ffffff;
-  --imsg-border: rgba(60, 60, 67, 0.2);
+  --imsg-canvas: #e5e5ea;
+  --imsg-surface: #e5e5ea;
+  --imsg-border: rgba(60, 60, 67, 0.1);
   --imsg-thread-bg: #e5e5ea;
-  --imsg-thread-border: rgba(60, 60, 67, 0.08);
+  --imsg-thread-border: rgba(60, 60, 67, 0.04);
   --cta-g1: #ff6a00;
   --cta-g2: #f61f8f;
   --cta-g3: #2f6fff;
@@ -266,19 +266,19 @@ main {
 
 .games-grid-rows {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .games-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 }
 
 .games-row::-webkit-scrollbar {
@@ -286,94 +286,164 @@ main {
 }
 
 .game-icon-card {
-  flex: 0 0 clamp(132px, 43vw, 164px);
+  flex: 0 0 clamp(154px, 45vw, 196px);
   scroll-snap-align: start;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 6px;
-  border-radius: 11px;
-  background: var(--surface-soft);
-  padding: 6px 7px;
-  min-height: 54px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 12px;
+  min-height: 132px;
+  color: #ffffff;
+  background: linear-gradient(145deg, #2844e8 0%, var(--accent) 46%, #63c7ff 100%);
+  box-shadow:
+    0 14px 26px rgba(16, 24, 47, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.game-icon-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at -10% -12%, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 52%),
+    radial-gradient(90% 70% at 100% 100%, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0) 64%);
+  mix-blend-mode: soft-light;
+}
+
+.game-icon-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .game-icon-card:hover {
-  transform: translateY(-1px);
-  background: #ffffff;
-  box-shadow: 0 5px 11px rgba(14, 16, 20, 0.1);
+  transform: translateY(-2px);
+  filter: saturate(1.06);
+  box-shadow:
+    0 18px 32px rgba(16, 24, 47, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .game-icon-tile {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   color: #ffffff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 5px rgba(0, 0, 0, 0.11);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  backdrop-filter: blur(8px) saturate(135%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 7px 14px rgba(7, 12, 26, 0.26),
+    0 0 16px var(--chip-glow, rgba(34, 118, 255, 0.28));
 }
 
 .game-icon-symbol {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
+}
+
+.game-icon-card[data-game="moji-mash"] {
+  background: linear-gradient(145deg, #7a2cfd 0%, var(--accent) 44%, #ff4eb6 100%);
+}
+
+.game-icon-card[data-game="bridges"] {
+  background: linear-gradient(145deg, #2441d7 0%, var(--accent) 48%, #45c4ff 100%);
+}
+
+.game-icon-card[data-game="whodunit"] {
+  background: linear-gradient(145deg, #344262 0%, var(--accent) 52%, #768cba 100%);
+}
+
+.game-icon-card[data-game="barter"] {
+  background: linear-gradient(145deg, #0f8f70 0%, var(--accent) 54%, #7de2bc 100%);
+}
+
+.game-icon-card[data-game="wordie"] {
+  background: linear-gradient(145deg, #2f57cd 0%, var(--accent) 45%, #66d4ff 100%);
+}
+
+.game-icon-card[data-game="mini-crossword"] {
+  background: linear-gradient(145deg, #117d8b 0%, var(--accent) 52%, #59b9ff 100%);
+}
+
+.game-icon-card[data-game="mini-sudoku"] {
+  background: linear-gradient(145deg, #aa680a 0%, var(--accent) 50%, #f5c34d 100%);
+}
+
+.game-icon-card[data-game="trivia"] {
+  background: linear-gradient(145deg, #cf3f2a 0%, var(--accent) 55%, #ff8e52 100%);
 }
 
 .tile-bridges {
-  background: #3f74f7;
+  --chip-glow: rgba(98, 197, 255, 0.45);
 }
 
 .tile-barter {
-  background: #2db18f;
+  --chip-glow: rgba(111, 241, 191, 0.42);
 }
 
 .tile-moji {
-  background: #8757f7;
+  --chip-glow: rgba(255, 137, 219, 0.46);
 }
 
 .tile-wordie {
-  background: #3aa0ea;
+  --chip-glow: rgba(115, 194, 255, 0.44);
 }
 
 .tile-sudoku {
-  background: #c18d2c;
+  --chip-glow: rgba(255, 211, 111, 0.45);
 }
 
 .tile-whodunit {
-  background: #525a70;
+  --chip-glow: rgba(157, 180, 231, 0.41);
 }
 
 .tile-trivia {
-  background: #ef5f3f;
+  --chip-glow: rgba(255, 145, 103, 0.44);
 }
 
 .tile-crossword {
-  background: #2b8897;
+  --chip-glow: rgba(124, 202, 255, 0.44);
 }
 
 .game-icon-meta {
   display: grid;
-  gap: 1px;
+  gap: 3px;
   min-width: 0;
+  width: 100%;
 }
 
 .game-icon-meta strong {
-  font-size: 0.69rem;
-  line-height: 1.12;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 10px rgba(12, 16, 24, 0.28);
 }
 
 .game-icon-meta span {
-  color: var(--muted);
-  font-size: 0.58rem;
-  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.68rem;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 8px rgba(12, 16, 24, 0.24);
 }
 
 .early-access {
@@ -476,6 +546,7 @@ main {
 .imessage-screen-shell {
   padding: 12px;
   background: var(--imsg-canvas);
+  box-shadow: none;
 }
 
 .imessage-screen {
@@ -485,7 +556,7 @@ main {
   border-radius: 16px;
   padding: 14px;
   background: var(--imsg-surface);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: none;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
 
@@ -979,11 +1050,11 @@ main {
     --line: rgba(242, 244, 248, 0.18);
     --line-soft: rgba(242, 244, 248, 0.1);
     --accent-soft: rgba(47, 111, 255, 0.2);
-    --imsg-canvas: #000000;
-    --imsg-surface: #000000;
-    --imsg-border: rgba(255, 255, 255, 0.11);
+    --imsg-canvas: #1c1c1e;
+    --imsg-surface: #1c1c1e;
+    --imsg-border: rgba(255, 255, 255, 0.08);
     --imsg-thread-bg: #1c1c1e;
-    --imsg-thread-border: rgba(255, 255, 255, 0.06);
+    --imsg-thread-border: rgba(255, 255, 255, 0.03);
     --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
     --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }
@@ -1006,7 +1077,6 @@ main {
   .hero-games,
   .games-showcase,
   .early-access,
-  .imessage-screen-shell,
   .footer {
     box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
@@ -1015,7 +1085,6 @@ main {
     background: rgba(47, 111, 255, 0.16);
   }
 
-  .game-icon-card,
   .waitlist-card,
   .steps article,
   .confirm-state {
@@ -1040,8 +1109,9 @@ main {
   }
 
   .game-icon-card:hover {
-    background: #292d37;
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.42);
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.26);
   }
 
   .imessage-bubble.incoming,
