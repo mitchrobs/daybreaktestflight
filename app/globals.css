@@ -1,19 +1,22 @@
 :root {
-  --bg: #f2f2f3;
+  --bg: #f4f4f5;
   --surface: #ffffff;
-  --surface-soft: #f8f8f9;
-  --ink: #131417;
-  --ink-soft: #2e3138;
-  --muted: #6a6f79;
-  --line: rgba(19, 20, 23, 0.09);
-  --line-soft: rgba(19, 20, 23, 0.05);
-  --accent: #4f7dff;
-  --accent-mint: #2ec9a8;
-  --accent-rose: #ff5f8f;
+  --surface-soft: #f2f3f5;
+  --ink: #0f1115;
+  --ink-soft: #2b3038;
+  --muted: #5e6470;
+  --line: rgba(15, 17, 21, 0.12);
+  --line-soft: rgba(15, 17, 21, 0.06);
+  --accent: #2276ff;
+  --accent-soft: rgba(34, 118, 255, 0.14);
+  --cta-g1: #ff6a00;
+  --cta-g2: #f61f8f;
+  --cta-g3: #2f6fff;
+  --cta-g4: #14b8a6;
   --success: #0f7c54;
   --error: #b1261d;
-  --shadow-sm: 0 4px 14px rgba(18, 20, 26, 0.06);
-  --shadow-md: 0 12px 26px rgba(18, 20, 26, 0.08);
+  --shadow-sm: 0 8px 24px rgba(12, 14, 18, 0.07);
+  --shadow-md: 0 18px 40px rgba(12, 14, 18, 0.11);
 }
 
 * {
@@ -29,12 +32,12 @@ html {
 body {
   font-family: var(--font-sora), sans-serif;
   color: var(--ink);
-  line-height: 1.4;
+  line-height: 1.45;
   min-height: 100vh;
   background:
-    radial-gradient(80% 46% at 0% -10%, rgba(79, 125, 255, 0.09), transparent 72%),
-    radial-gradient(72% 42% at 100% 10%, rgba(46, 201, 168, 0.06), transparent 78%),
-    linear-gradient(180deg, #f9f9f9 0%, #f2f2f3 52%, #ededee 100%);
+    radial-gradient(72% 45% at 0% -10%, rgba(34, 118, 255, 0.08), transparent 72%),
+    radial-gradient(56% 34% at 96% 4%, rgba(246, 31, 143, 0.06), transparent 82%),
+    linear-gradient(180deg, #f9f9fa 0%, #f1f2f3 58%, #ececef 100%);
   padding: 18px 5vw 88px;
 }
 
@@ -57,20 +60,20 @@ main {
 .topbar,
 .hero,
 .games-showcase,
+.steps,
 .early-access,
 .imessage-screen-shell,
 .footer {
-  border: 1px solid var(--line-soft);
-  border-radius: 18px;
+  border-radius: 22px;
   background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 14px;
+  padding: 13px 16px;
 }
 
 .wordmark {
@@ -81,52 +84,50 @@ main {
 }
 
 .badge-pill {
-  border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   background: var(--surface-soft);
   color: var(--muted);
-  font-size: 0.61rem;
+  font-size: 0.64rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 .invite-banner {
-  border: 1px solid rgba(79, 125, 255, 0.25);
-  border-radius: 12px;
-  padding: 12px 14px;
-  background: rgba(79, 125, 255, 0.08);
+  border-radius: 14px;
+  padding: 13px 15px;
+  background: var(--accent-soft);
   color: var(--ink-soft);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
 }
 
 .hero {
-  padding: clamp(18px, 3vw, 26px);
+  padding: clamp(22px, 4vw, 34px);
 }
 
 .hero-inner {
   display: grid;
-  gap: 11px;
+  gap: 14px;
 }
 
 .hero-eyebrow {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.69rem;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
 }
 
 .hero-title {
-  font-size: clamp(1.42rem, 4.3vw, 3.05rem);
-  line-height: 1.05;
-  letter-spacing: -0.028em;
-  max-width: 17ch;
+  font-size: clamp(2rem, 7.2vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.032em;
+  max-width: 15ch;
 }
 
 .hero-sub {
   color: var(--ink-soft);
   max-width: 64ch;
-  font-size: clamp(0.94rem, 2.2vw, 1.04rem);
+  font-size: clamp(1rem, 2.3vw, 1.18rem);
 }
 
 .hero-actions {
@@ -140,16 +141,16 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 18px;
+  padding: 12px 20px;
   border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(15, 17, 21, 0.14);
   background: var(--surface-soft);
   color: var(--ink);
   cursor: pointer;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .cta:hover {
@@ -158,8 +159,8 @@ main {
 }
 
 .cta.primary {
-  background: #111318;
-  border-color: #111318;
+  background: #0d0f14;
+  border-color: #0d0f14;
   color: #ffffff;
 }
 
@@ -171,116 +172,140 @@ main {
 .cta-glow {
   position: relative;
   isolation: isolate;
+  overflow: visible;
 }
 
 .cta-glow::before {
   content: "";
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: inherit;
-  background: linear-gradient(120deg, var(--accent), var(--accent-mint), var(--accent-rose), var(--accent));
-  background-size: 220% 220%;
-  filter: blur(9px);
-  opacity: 0.45;
+  background: linear-gradient(120deg, var(--cta-g1), var(--cta-g2), var(--cta-g3), var(--cta-g4), var(--cta-g1));
+  background-size: 280% 280%;
+  filter: blur(11px);
+  opacity: 0.18;
+  z-index: -2;
+  pointer-events: none;
+  transition: opacity 0.24s ease;
+}
+
+.cta-glow::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(120deg, var(--cta-g1), var(--cta-g2), var(--cta-g3), var(--cta-g4), var(--cta-g1));
+  background-size: 280% 280%;
+  opacity: 0.42;
   z-index: -1;
   pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.24s ease;
 }
 
 .cta-glow:hover::before,
-.cta-glow:focus-visible::before {
-  opacity: 0.96;
-  animation: cta-glow-shift 2.4s linear infinite;
+.cta-glow:hover::after,
+.cta-glow:focus-visible::before,
+.cta-glow:focus-visible::after,
+.cta-glow:active::before,
+.cta-glow:active::after {
+  opacity: 1;
+  animation: cta-glow-shift 2.2s linear infinite;
 }
 
 .games-showcase {
-  padding: 14px;
+  padding: 16px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .section-kicker {
-  color: var(--muted);
-  font-size: 0.65rem;
+  color: #55679b;
+  font-size: 0.67rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .games-heading-row {
   display: grid;
-  gap: 4px;
+  gap: 6px;
 }
 
 .games-heading-row h2 {
-  font-size: clamp(1.07rem, 2.7vw, 1.42rem);
-  line-height: 1.16;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.35rem, 4.6vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .games-heading-row p {
   color: var(--ink-soft);
-  font-size: 0.85rem;
+  font-size: 0.93rem;
 }
 
-.games-carousel {
+.games-grid-rows {
+  display: grid;
+  gap: 8px;
+}
+
+.games-row {
+  display: flex;
+  gap: 8px;
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
   scroll-snap-type: x mandatory;
-  padding-bottom: 6px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 5px;
 }
 
-.games-carousel::-webkit-scrollbar {
-  height: 7px;
+.games-row::-webkit-scrollbar {
+  height: 6px;
 }
 
-.games-carousel::-webkit-scrollbar-thumb {
-  background: rgba(17, 19, 24, 0.18);
+.games-row::-webkit-scrollbar-thumb {
+  background: rgba(15, 17, 21, 0.15);
   border-radius: 999px;
 }
 
-.games-carousel-track {
-  display: flex;
-  gap: 8px;
-  width: max-content;
-  padding: 2px 1px 8px;
-}
-
 .game-icon-card {
-  flex: 0 0 clamp(136px, 38vw, 160px);
+  flex: 0 0 clamp(132px, 43vw, 164px);
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 8px;
-  border: 1px solid var(--line-soft);
-  border-radius: 13px;
-  background: #ffffff;
-  padding: 8px;
-  min-height: 64px;
-  box-shadow: 0 4px 12px rgba(17, 19, 24, 0.05);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  gap: 7px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  padding: 7px 8px;
+  min-height: 58px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .game-icon-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(79, 125, 255, 0.32);
-  box-shadow: 0 10px 18px rgba(17, 19, 24, 0.11);
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(14, 16, 20, 0.12);
 }
 
 .game-icon-tile {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
   display: grid;
   place-items: center;
   color: #ffffff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 7px rgba(0, 0, 0, 0.12);
 }
 
 .game-icon-symbol {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
 }
 
 .tile-bridges {
@@ -322,8 +347,8 @@ main {
 }
 
 .game-icon-meta strong {
-  font-size: 0.78rem;
-  line-height: 1.15;
+  font-size: 0.72rem;
+  line-height: 1.12;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -331,7 +356,7 @@ main {
 
 .game-icon-meta span {
   color: var(--muted);
-  font-size: 0.67rem;
+  font-size: 0.61rem;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -340,24 +365,25 @@ main {
 
 .early-access {
   display: grid;
-  gap: 14px;
-  padding: 16px;
+  gap: 16px;
+  padding: 18px;
 }
 
 .early-access-copy {
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 .early-access-copy h2 {
-  font-size: clamp(1.08rem, 3vw, 1.42rem);
-  line-height: 1.2;
+  font-size: clamp(1.45rem, 5.3vw, 2.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
 }
 
 .early-access-copy p {
-  color: #2a2d34;
-  font-size: 0.93rem;
-  line-height: 1.45;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.5;
   max-width: 64ch;
 }
 
@@ -369,26 +395,25 @@ main {
 .screen,
 .waitlist-card,
 .imessage-screen {
-  border: 1px solid var(--line-soft);
-  border-radius: 15px;
-  padding: 14px;
-  background: #ffffff;
-  box-shadow: var(--shadow-sm);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .screen-header {
-  font-size: 0.64rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   color: var(--muted);
 }
 
 .waitlist-note {
-  color: #2a2d34;
-  font-size: 0.9rem;
-  line-height: 1.42;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.5;
 }
 
 .waitlist-form {
@@ -405,16 +430,16 @@ main {
 
 .field {
   width: 100%;
-  border: 1px solid rgba(19, 20, 23, 0.14);
-  border-radius: 10px;
-  padding: 10px 11px;
+  border: 1px solid rgba(15, 17, 21, 0.16);
+  border-radius: 11px;
+  padding: 11px 12px;
   background: #ffffff;
   color: var(--ink);
-  font-size: 0.94rem;
+  font-size: 0.96rem;
 }
 
 .field:focus {
-  outline: 2px solid rgba(79, 125, 255, 0.38);
+  outline: 2px solid rgba(34, 118, 255, 0.42);
   outline-offset: 1px;
 }
 
@@ -437,50 +462,49 @@ main {
 }
 
 .imessage-screen-shell {
-  padding: 10px;
+  padding: 12px;
 }
 
 .imessage-screen {
-  gap: 10px;
+  gap: 14px;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
 
 .imessage-intro {
   display: grid;
-  gap: 5px;
+  gap: 7px;
 }
 
 .imessage-kicker {
   color: var(--muted);
-  font-size: 0.63rem;
+  font-size: 0.67rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.17em;
 }
 
 .imessage-heading {
   font-family: var(--font-sora), sans-serif;
-  font-size: clamp(0.98rem, 2.9vw, 1.12rem);
-  line-height: 1.24;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.34rem, 5vw, 2.3rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
 }
 
 .imessage-subheader {
-  color: #2d3139;
-  font-size: 0.84rem;
-  line-height: 1.42;
-  max-width: 58ch;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.5;
+  max-width: 60ch;
 }
 
 .imessage-thread-shell {
-  border: 1px solid rgba(19, 20, 23, 0.08);
-  border-radius: 14px;
-  padding: 9px;
-  background: #fafafb;
+  border-radius: 16px;
+  padding: 11px;
+  background: #f5f6f8;
 }
 
 .imessage-thread {
   display: grid;
-  gap: 8px;
+  gap: 7px;
   padding: 2px 0;
 }
 
@@ -518,18 +542,19 @@ main {
   background: #e9e9eb;
   color: #1c1c1e;
   border-top-right-radius: 8px;
-  padding: 9px 11px;
-  font-size: 0.86rem;
+  padding: 6px 8px;
+  font-size: 0.69rem;
+  line-height: 1.23;
 }
 
 .imessage-bubble.typing-bubble {
-  width: 40px;
-  height: 26px;
-  padding: 0 8px;
+  width: 28px;
+  height: 18px;
+  padding: 0 6px;
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .imessage-bubble.typing-bubble.is-active {
@@ -542,8 +567,8 @@ main {
 }
 
 .typing-dot {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: rgba(28, 28, 30, 0.48);
   animation: typing-dot-bounce 0.72s ease-in-out infinite;
@@ -557,11 +582,24 @@ main {
   animation-delay: 0.22s;
 }
 
+.imessage-bubble.note-bubble {
+  max-width: min(62vw, 180px);
+}
+
+.imessage-bubble.note-bubble.is-hidden {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.imessage-bubble.note-bubble.is-visible {
+  animation: outgoing-send-in 0.92s cubic-bezier(0.2, 0.86, 0.35, 1) forwards;
+}
+
 .imessage-bubble.link-bubble {
   display: grid;
   gap: 0;
-  width: min(82vw, 320px);
-  max-width: min(82vw, 320px);
+  width: min(66vw, 224px);
+  max-width: min(66vw, 224px);
   padding: 0;
   overflow: hidden;
   background: transparent;
@@ -569,7 +607,7 @@ main {
 
 .imessage-bubble.link-bubble.is-hidden {
   opacity: 0;
-  transform: translateX(-46px);
+  transform: translateX(-32px);
 }
 
 .imessage-bubble.link-bubble.is-visible {
@@ -578,10 +616,10 @@ main {
 
 .imessage-link-card {
   display: block;
-  border-radius: 17px 17px 8px 17px;
+  border-radius: 15px 15px 8px 15px;
   overflow: hidden;
   background: #e9e9eb;
-  border: 1px solid rgba(17, 17, 17, 0.06);
+  border: 1px solid rgba(17, 17, 17, 0.05);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
 }
 
@@ -598,7 +636,7 @@ main {
 }
 
 .imessage-link-meta {
-  padding: 6px 8px 7px;
+  padding: 5px 6px 6px;
   display: grid;
   gap: 1px;
   color: #131313;
@@ -606,13 +644,13 @@ main {
 }
 
 .imessage-link-meta strong {
-  font-size: 0.78rem;
+  font-size: 0.58rem;
   line-height: 1.2;
   font-weight: 600;
 }
 
 .imessage-link-meta span {
-  font-size: 0.66rem;
+  font-size: 0.52rem;
   line-height: 1.16;
   color: rgba(19, 19, 19, 0.56);
 }
@@ -637,36 +675,36 @@ main {
 }
 
 .steps {
+  padding: 16px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 9px;
 }
 
 .steps article {
-  border: 1px solid var(--line-soft);
   border-radius: 14px;
-  padding: 12px;
-  background: #ffffff;
-  box-shadow: 0 6px 14px rgba(18, 20, 26, 0.05);
+  padding: 14px;
+  background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .steps h3 {
   color: var(--ink);
-  font-size: 0.8rem;
+  font-size: 1.02rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  margin-bottom: 5px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
 }
 
 .steps p {
-  color: #2a2d34;
-  font-size: 0.9rem;
-  line-height: 1.35;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.45;
 }
 
 .footer {
   margin-top: 20px;
-  padding: 13px;
+  padding: 16px;
   display: grid;
   gap: 10px;
   margin-bottom: 56px;
@@ -676,7 +714,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -839,16 +877,19 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .imessage-bubble.note-bubble.is-visible,
   .imessage-bubble.link-bubble.is-visible,
   .imessage-bubble.typing-bubble,
   .typing-dot,
   .game-icon-card,
   .cta,
-  .cta-glow::before {
+  .cta-glow::before,
+  .cta-glow::after {
     animation: none;
     transition: none;
   }
 
+  .imessage-bubble.note-bubble.is-visible,
   .imessage-bubble.link-bubble.is-visible {
     opacity: 1;
     transform: none;
@@ -867,32 +908,43 @@ main {
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0f1013;
-    --surface: #181a1f;
-    --surface-soft: #20232a;
-    --ink: #f2f3f5;
-    --ink-soft: #dbdee4;
-    --muted: #a6adb9;
-    --line: rgba(242, 243, 245, 0.2);
-    --line-soft: rgba(242, 243, 245, 0.11);
-    --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 16px 34px rgba(0, 0, 0, 0.45);
+    --surface: #17191e;
+    --surface-soft: #20232b;
+    --ink: #f2f4f8;
+    --ink-soft: #d5dbe6;
+    --muted: #9ea7b7;
+    --line: rgba(242, 244, 248, 0.18);
+    --line-soft: rgba(242, 244, 248, 0.1);
+    --accent-soft: rgba(47, 111, 255, 0.2);
+    --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.38);
+    --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.48);
   }
 
   body {
     background:
-      radial-gradient(80% 46% at 0% -10%, rgba(79, 125, 255, 0.14), transparent 72%),
-      radial-gradient(72% 42% at 100% 10%, rgba(46, 201, 168, 0.08), transparent 78%),
+      radial-gradient(72% 45% at 0% -10%, rgba(47, 111, 255, 0.2), transparent 72%),
+      radial-gradient(56% 34% at 96% 4%, rgba(246, 31, 143, 0.16), transparent 82%),
       linear-gradient(180deg, #15161a 0%, #101115 52%, #0d0e12 100%);
   }
 
   .cta.primary {
-    background: #f1f3f6;
-    border-color: #f1f3f6;
-    color: #121418;
+    background: #f7f8fb;
+    border-color: #f7f8fb;
+    color: #0f1115;
+  }
+
+  .topbar,
+  .hero,
+  .games-showcase,
+  .steps,
+  .early-access,
+  .imessage-screen-shell,
+  .footer {
+    box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .invite-banner {
-    background: rgba(79, 125, 255, 0.14);
+    background: rgba(47, 111, 255, 0.16);
   }
 
   .game-icon-card,
@@ -900,12 +952,7 @@ main {
   .imessage-screen,
   .steps article,
   .confirm-state {
-    background: var(--surface);
-  }
-
-  .imessage-thread-shell {
-    background: rgba(242, 243, 245, 0.03);
-    border-color: var(--line-soft);
+    background: var(--surface-soft);
   }
 
   .field,
@@ -915,9 +962,14 @@ main {
     color: var(--ink);
   }
 
+  .game-icon-card:hover {
+    background: #292d37;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.42);
+  }
+
   .imessage-bubble.incoming,
   .imessage-bubble.outgoing {
-    background: rgba(118, 118, 128, 0.36);
+    background: rgba(118, 118, 128, 0.42);
     color: #f2f2f7;
   }
 
@@ -949,8 +1001,15 @@ main {
     padding: 22px 6vw 32px;
   }
 
+  .games-row {
+    overflow: visible;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+
   .game-icon-card {
-    flex-basis: clamp(144px, 27vw, 168px);
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .early-access {
@@ -960,6 +1019,7 @@ main {
 
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .share-row {
@@ -972,10 +1032,6 @@ main {
 }
 
 @media (min-width: 960px) {
-  .game-icon-card {
-    flex-basis: clamp(148px, 20vw, 178px);
-  }
-
   .footer {
     margin-bottom: 0;
   }

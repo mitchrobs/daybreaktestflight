@@ -19,8 +19,8 @@ type GameIconEntry = {
   tileClassName: string;
 };
 
-const games: GameIconEntry[] = [
-  {
+const gamesById: Record<GameVariant, GameIconEntry> = {
+  bridges: {
     id: "bridges",
     name: "Bridges",
     tagline: "Link the islands",
@@ -29,7 +29,7 @@ const games: GameIconEntry[] = [
     icon: Waypoints,
     tileClassName: "tile-bridges"
   },
-  {
+  barter: {
     id: "barter",
     name: "Barter",
     tagline: "Trade to the goal",
@@ -38,7 +38,7 @@ const games: GameIconEntry[] = [
     icon: ArrowLeftRight,
     tileClassName: "tile-barter"
   },
-  {
+  "moji-mash": {
     id: "moji-mash",
     name: "Moji Mash",
     tagline: "Guess the blend",
@@ -47,7 +47,7 @@ const games: GameIconEntry[] = [
     icon: Puzzle,
     tileClassName: "tile-moji"
   },
-  {
+  wordie: {
     id: "wordie",
     name: "Wordie",
     tagline: "Five letters, six tries",
@@ -56,7 +56,7 @@ const games: GameIconEntry[] = [
     icon: Type,
     tileClassName: "tile-wordie"
   },
-  {
+  "mini-sudoku": {
     id: "mini-sudoku",
     name: "Mini Sudoku",
     tagline: "6x6 logic sprint",
@@ -65,7 +65,7 @@ const games: GameIconEntry[] = [
     icon: Calculator,
     tileClassName: "tile-sudoku"
   },
-  {
+  whodunit: {
     id: "whodunit",
     name: "Whodunit",
     tagline: "Daily mystery case",
@@ -74,7 +74,7 @@ const games: GameIconEntry[] = [
     icon: Search,
     tileClassName: "tile-whodunit"
   },
-  {
+  trivia: {
     id: "trivia",
     name: "Trivia",
     tagline: "Quickfire rounds",
@@ -83,7 +83,7 @@ const games: GameIconEntry[] = [
     icon: Zap,
     tileClassName: "tile-trivia"
   },
-  {
+  "mini-crossword": {
     id: "mini-crossword",
     name: "Mini Crossword",
     tagline: "Tiny, sharp clues",
@@ -92,6 +92,11 @@ const games: GameIconEntry[] = [
     icon: Table2,
     tileClassName: "tile-crossword"
   }
+};
+
+const gameRows: GameIconEntry[][] = [
+  [gamesById["moji-mash"], gamesById.bridges, gamesById.whodunit, gamesById.barter],
+  [gamesById.wordie, gamesById["mini-crossword"], gamesById["mini-sudoku"], gamesById.trivia]
 ];
 
 export function GameIconShowcase() {
@@ -100,35 +105,37 @@ export function GameIconShowcase() {
       <p className="section-kicker">Today in Gameshow</p>
       <div className="games-heading-row">
         <h2 id="games-title">A lineup you&apos;ll open every day.</h2>
-        <p>Eight daily games with compact cards. Swipe to browse.</p>
+        <p>Eight daily games in a compact lineup.</p>
       </div>
 
-      <div className="games-carousel" role="region" aria-label="Games carousel">
-        <div className="games-carousel-track">
-          {games.map((game) => {
-            const Icon = game.icon;
+      <div className="games-grid-rows">
+        {gameRows.map((row, rowIndex) => (
+          <div key={`row-${rowIndex}`} className="games-row">
+            {row.map((game) => {
+              const Icon = game.icon;
 
-            return (
-              <a
-                key={game.id}
-                className="game-icon-card"
-                data-game={game.variant}
-                href={game.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={`Open ${game.name} on Gameshow`}
-              >
-                <span className={`game-icon-tile ${game.tileClassName}`} aria-hidden="true">
-                  <Icon className="game-icon-symbol" size={18} strokeWidth={2.1} />
-                </span>
-                <span className="game-icon-meta">
-                  <strong>{game.name}</strong>
-                  <span>{game.tagline}</span>
-                </span>
-              </a>
-            );
-          })}
-        </div>
+              return (
+                <a
+                  key={game.id}
+                  className="game-icon-card"
+                  data-game={game.variant}
+                  href={game.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`Open ${game.name} on Gameshow`}
+                >
+                  <span className={`game-icon-tile ${game.tileClassName}`} aria-hidden="true">
+                    <Icon className="game-icon-symbol" size={18} strokeWidth={2.1} />
+                  </span>
+                  <span className="game-icon-meta">
+                    <strong>{game.name}</strong>
+                    <span>{game.tagline}</span>
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </section>
   );

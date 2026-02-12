@@ -15,6 +15,16 @@ export async function GET(
   const inviter = await getInviterByCode(code);
   const copy = buildInviteCardCopy(inviter?.firstName);
   const inviteTemplateDataUrl = await getInviteTemplateDataUrl();
+  const featuredGames = [
+    { label: "MM", name: "Moji Mash", color: "#8b5cf6" },
+    { label: "BR", name: "Bridges", color: "#3b82f6" },
+    { label: "WH", name: "Whodunit", color: "#64748b" },
+    { label: "BA", name: "Barter", color: "#14b8a6" },
+    { label: "WO", name: "Wordie", color: "#0ea5e9" },
+    { label: "MC", name: "Mini Crossword", color: "#0f766e" },
+    { label: "MS", name: "Mini Sudoku", color: "#b45309" },
+    { label: "TR", name: "Trivia", color: "#ea580c" }
+  ];
 
   return new ImageResponse(
     (
@@ -93,18 +103,73 @@ export async function GET(
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
+              gap: 10
+            }}>
+            <div style={{ fontSize: 18, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.72 }}>
+              Today&apos;s game logos
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 9, maxWidth: 1080 }}>
+              {featuredGames.map((game) => (
+                <div
+                  key={game.name}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    borderRadius: 999,
+                    background: "rgba(255,255,255,0.78)",
+                    border: "1px solid rgba(0,0,0,0.1)",
+                    padding: "6px 10px 6px 6px"
+                  }}>
+                  <div
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 10,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#ffffff",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      background: game.color
+                    }}>
+                    {game.label}
+                  </div>
+                  <div style={{ fontSize: 16, color: "#171717", whiteSpace: "nowrap" }}>{game.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               border: "1px solid rgba(0,0,0,0.12)",
               borderRadius: "22px",
               padding: "15px 22px",
               background: "rgba(255,255,255,0.78)",
-              fontSize: 20,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase"
+              gap: 16
             }}>
-            <span>Early iOS Access</span>
-            <span>Invite-Only Queue</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <span style={{ fontSize: 24, letterSpacing: "-0.01em", fontWeight: 600 }}>You&apos;re invited to our Daybreak group</span>
+              <span style={{ fontSize: 17, opacity: 0.72 }}>Open your invite and start sharing game scores together.</span>
+            </div>
+            <span
+              style={{
+                fontSize: 17,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                borderRadius: 999,
+                border: "1px solid rgba(0,0,0,0.14)",
+                padding: "10px 16px",
+                whiteSpace: "nowrap"
+              }}>
+              Open Invite
+            </span>
           </div>
         </div>
       </div>

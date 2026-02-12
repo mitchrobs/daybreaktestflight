@@ -10,6 +10,7 @@ describe("landing page invite preview", () => {
     const expectedDomain = getPreviewDomain(buildPreviewInviteUrl("ABC123"));
     const heroIndex = markup.indexOf("Smart games and puzzles that you&#x27;ll look forward to each day.");
     const gamesIndex = markup.indexOf("Today in Gameshow");
+    const stepsIndex = markup.indexOf("01 Join");
     const waitlistIndex = markup.indexOf("Early Access");
     const previewIndex = markup.indexOf("imessage-thread");
     const incomingScoreIndex = markup.indexOf("#106 3/6");
@@ -36,6 +37,7 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("🟩🟩🟩🟩🟩");
     expect(markup).toContain("Today");
     expect(markup).toContain("typing-bubble");
+    expect(markup).toContain("made a group for us on daybreak)");
     expect(markup).not.toContain("4 guesses is elite.");
     expect(markup).not.toContain("Daybreak is a calm daily ritual");
     expect(markup).not.toContain("How It Works");
@@ -43,8 +45,9 @@ describe("landing page invite preview", () => {
     expect(markup).toContain(expectedDomain);
     expect(heroIndex).toBeGreaterThan(-1);
     expect(gamesIndex).toBeGreaterThan(heroIndex);
+    expect(stepsIndex).toBeGreaterThan(gamesIndex);
     expect(waitlistIndex).toBeGreaterThan(-1);
-    expect(waitlistIndex).toBeGreaterThan(gamesIndex);
+    expect(waitlistIndex).toBeGreaterThan(stepsIndex);
     expect(previewIndex).toBeGreaterThan(waitlistIndex);
     expect(incomingScoreIndex).toBeGreaterThan(-1);
     expect(outgoingPreviewIndex).toBeGreaterThan(incomingScoreIndex);
