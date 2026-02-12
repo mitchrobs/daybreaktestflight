@@ -184,6 +184,13 @@ main {
 
 .imessage-screen {
   align-content: start;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
 
@@ -220,9 +227,35 @@ main {
   background: #e9e9eb;
   color: #1c1c1e;
   border-top-right-radius: 8px;
+}
+
+.imessage-bubble.typing-bubble {
+  width: 46px;
+  height: 30px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   opacity: 0;
-  transform: translateX(-26px);
-  animation: outgoing-send-in 0.55s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+  transform: translateX(-14px);
+  animation: typing-bubble-in-out 0.95s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.typing-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(28, 28, 30, 0.48);
+  animation: typing-dot-bounce 0.72s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.11s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.22s;
 }
 
 .imessage-bubble.link-bubble {
@@ -231,6 +264,9 @@ main {
   max-width: min(96%, 370px);
   padding: 0;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(-26px);
+  animation: outgoing-send-in 0.55s cubic-bezier(0.17, 0.84, 0.44, 1) 0.9s forwards;
 }
 
 .imessage-link-card {
@@ -502,14 +538,58 @@ main {
   }
 }
 
+@keyframes typing-bubble-in-out {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  18% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(6px);
+  }
+}
+
+@keyframes typing-dot-bounce {
+  0%,
+  100% {
+    opacity: 0.36;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-1.5px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .imessage-bubble.outgoing {
+  .imessage-bubble.link-bubble {
     animation: none;
   }
 
-  .imessage-bubble.outgoing {
+  .imessage-bubble.link-bubble {
     opacity: 1;
     transform: none;
+  }
+
+  .imessage-bubble.typing-bubble,
+  .typing-dot {
+    animation: none;
+  }
+
+  .imessage-bubble.typing-bubble {
+    display: none;
   }
 }
 
@@ -550,6 +630,10 @@ main {
   .imessage-bubble.outgoing {
     background: rgba(118, 118, 128, 0.34);
     color: #f2f2f7;
+  }
+
+  .typing-dot {
+    background: rgba(242, 242, 247, 0.58);
   }
 
   .imessage-link-card {
@@ -601,11 +685,6 @@ main {
 }
 
 @media (min-width: 960px) {
-  .visual-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-  }
-
   .footer {
     margin-bottom: 0;
   }

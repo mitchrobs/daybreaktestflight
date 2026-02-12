@@ -55,11 +55,17 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
 
         <section className="visuals">
           <div className="visual-grid">
-            <article className="screen imessage-screen" aria-label="iMessage invite preview">
-              <div className="screen-header">iMessage invite preview</div>
+            <WaitlistForm referralCode={referralCode} />
+
+            <article className="imessage-screen" aria-label="iMessage invite preview">
               <div className="imessage-thread">
-                <div className="imessage-bubble incoming">Where are you?</div>
+                <div className="imessage-bubble incoming">Drop your NYT score.</div>
                 <IMessageTimestamp />
+                <div className="imessage-bubble outgoing typing-bubble" aria-hidden="true">
+                  <span className="typing-dot" />
+                  <span className="typing-dot" />
+                  <span className="typing-dot" />
+                </div>
                 <div className="imessage-bubble outgoing link-bubble">
                   <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
                     <div className="imessage-link-image-wrap">
@@ -78,10 +84,9 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
                     </div>
                   </a>
                 </div>
+                <div className="imessage-bubble incoming">4 guesses is elite.</div>
               </div>
             </article>
-
-            <WaitlistForm referralCode={referralCode} />
           </div>
         </section>
 
