@@ -16,6 +16,7 @@ describe("landing page invite preview", () => {
     const stepsIndex = markup.indexOf("01 Join");
     const incomingScoreIndex = markup.indexOf("#106 3/6");
     const outgoingPreviewIndex = markup.indexOf("link-bubble");
+    const outgoingFollowupIndex = markup.indexOf("join the daybreak beta with my link and it will make a dedicated group for us");
 
     expect(markup).not.toContain("ios-device-frame");
     expect(markup).not.toContain('class="screen-header">iMessage invite preview');
@@ -45,6 +46,7 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("typing-bubble");
     expect(markup).toContain("imessage-contact-avatar");
     expect(markup).toContain("Sam");
+    expect(markup).toContain("join the daybreak beta with my link and it will make a dedicated group for us");
     expect(markup).not.toContain("4 guesses is elite.");
     expect(markup).not.toContain("Daybreak is a calm daily ritual");
     expect(markup).not.toContain("How It Works");
@@ -59,5 +61,6 @@ describe("landing page invite preview", () => {
     expect(stepsIndex).toBeGreaterThan(waitlistIndex);
     expect(incomingScoreIndex).toBeGreaterThan(-1);
     expect(outgoingPreviewIndex).toBeGreaterThan(incomingScoreIndex);
+    expect(outgoingFollowupIndex).toBeGreaterThan(outgoingPreviewIndex);
   });
 });

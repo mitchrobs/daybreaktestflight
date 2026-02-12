@@ -13,8 +13,9 @@ type IMessagePreviewThreadProps = {
 
 const SCORE_MESSAGE = "#106 3/6\n⬛⬛🟨⬛⬛\n⬛🟩⬛⬛⬛\n🟩🟩🟩🟩🟩";
 const FOLLOW_UP_MESSAGE = "ngl I got lucky today";
+const OUTGOING_INVITE_MESSAGE = "join the daybreak beta with my link and it will make a dedicated group for us";
 
-type AnimationPhase = "idle" | "typing" | "link";
+type AnimationPhase = "idle" | "typing-link" | "link" | "typing-followup" | "followup";
 
 export function IMessagePreviewThread({
   previewInviteUrl,
@@ -69,17 +70,31 @@ export function IMessagePreviewThread({
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      setPhase("link");
+      setPhase("followup");
       return;
     }
 
-    setPhase("typing");
-    const timer = window.setTimeout(() => {
+    setPhase("typing-link");
+    const firstTimer = window.setTimeout(() => {
       setPhase("link");
     }, 2200);
+    const secondTimer = window.setTimeout(() => {
+      setPhase("typing-followup");
+    }, 3600);
+    const finalTimer = window.setTimeout(() => {
+      setPhase("followup");
+    }, 5400);
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(firstTimer);
+      window.clearTimeout(secondTimer);
+      window.clearTimeout(finalTimer);
+    };
   }, [hasEnteredView]);
+
+  const showTypingBubble = phase === "typing-link" || phase === "typing-followup";
+  const showLinkBubble = phase === "link" || phase === "typing-followup" || phase === "followup";
+  const showFollowupOutgoing = phase === "followup";
 
   return (
     <div ref={containerRef} className="imessage-thread">
@@ -94,12 +109,12 @@ export function IMessagePreviewThread({
         </div>
       </div>
       <IMessageTimestamp />
-      <div className={`imessage-bubble outgoing typing-bubble ${phase === "typing" ? "is-active" : "is-hidden"}`} aria-hidden="true">
+      <div className={`imessage-bubble outgoing typing-bubble ${showTypingBubble ? "is-active" : "is-hidden"}`} aria-hidden="true">
         <span className="typing-dot" />
         <span className="typing-dot" />
         <span className="typing-dot" />
       </div>
-      <div className={`imessage-bubble outgoing link-bubble ${phase === "link" ? "is-visible" : "is-hidden"}`}>
+      <div className={`imessage-bubble outgoing link-bubble ${showLinkBubble ? "is-visible" : "is-hidden"}`}>
         <a className="imessage-link-card" href={previewInviteUrl} aria-label={previewTitle}>
           <div className="imessage-link-image-wrap">
             <Image
@@ -116,6 +131,9 @@ export function IMessagePreviewThread({
             <span>{previewDomain}</span>
           </div>
         </a>
+      </div>
+      <div className={`imessage-bubble outgoing followup-outgoing-bubble ${showFollowupOutgoing ? "is-visible" : "is-hidden"}`}>
+        {OUTGOING_INVITE_MESSAGE}
       </div>
     </div>
   );
