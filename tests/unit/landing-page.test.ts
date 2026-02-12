@@ -10,10 +10,10 @@ describe("landing page invite preview", () => {
     const expectedDomain = getPreviewDomain(buildPreviewInviteUrl("ABC123"));
     const heroGamesIndex = markup.indexOf("hero-games");
     const heroIndex = markup.indexOf("Smart games and puzzles that you&#x27;ll look forward to each day.");
-    const gamesIndex = markup.indexOf("Today in Gameshow");
+    const gamesIndex = markup.indexOf("Moji Mash");
     const previewIndex = markup.indexOf("imessage-thread");
+    const waitlistIndex = markup.indexOf("Get early access.");
     const stepsIndex = markup.indexOf("01 Join");
-    const waitlistIndex = markup.indexOf("Early Access");
     const incomingScoreIndex = markup.indexOf("#106 3/6");
     const outgoingPreviewIndex = markup.indexOf("link-bubble");
 
@@ -24,7 +24,8 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("Daily games, dynamic difficulty, and groups that stay in sync.");
     expect(markup).toContain("Start Playing");
     expect(markup).not.toContain("hero-actions");
-    expect(markup).toContain("Today in Gameshow");
+    expect(markup).not.toContain("Today in Gameshow");
+    expect(markup).not.toContain("A lineup you&#x27;ll open every day.");
     expect(markup).toContain("Bridges");
     expect(markup).toContain("Barter");
     expect(markup).toContain("Moji Mash");
@@ -41,6 +42,8 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("🟩🟩🟩🟩🟩");
     expect(markup).toContain("Today");
     expect(markup).toContain("typing-bubble");
+    expect(markup).toContain("imessage-contact-avatar");
+    expect(markup).toContain("Maya");
     expect(markup).not.toContain("4 guesses is elite.");
     expect(markup).not.toContain("Daybreak is a calm daily ritual");
     expect(markup).not.toContain("How It Works");
@@ -50,9 +53,9 @@ describe("landing page invite preview", () => {
     expect(heroIndex).toBeGreaterThan(-1);
     expect(gamesIndex).toBeGreaterThan(heroGamesIndex);
     expect(previewIndex).toBeGreaterThan(gamesIndex);
-    expect(stepsIndex).toBeGreaterThan(previewIndex);
     expect(waitlistIndex).toBeGreaterThan(-1);
-    expect(waitlistIndex).toBeGreaterThan(stepsIndex);
+    expect(waitlistIndex).toBeGreaterThan(previewIndex);
+    expect(stepsIndex).toBeGreaterThan(waitlistIndex);
     expect(incomingScoreIndex).toBeGreaterThan(-1);
     expect(outgoingPreviewIndex).toBeGreaterThan(incomingScoreIndex);
   });

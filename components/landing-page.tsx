@@ -63,25 +63,25 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
           </div>
         </section>
 
-        <section className="steps">
-          <article>
-            <h3>01 Join</h3>
-            <p>Use your Apple ID email.</p>
-          </article>
-          <article>
-            <h3>02 Confirm</h3>
-            <p>Unlock your personal invite link.</p>
-          </article>
-          <article>
-            <h3>03 Invite</h3>
-            <p>Each confirmed friend moves you up.</p>
-          </article>
-        </section>
-
         <section className="early-access" aria-labelledby="early-access-title">
           <div className="early-access-copy">
             <h2 id="early-access-title">Get early access.</h2>
             <p>Join the waitlist, claim your private invite link, and bring your puzzle group in before public launch.</p>
+
+            <div className="steps signup-flow-steps">
+              <article>
+                <h3>01 Join</h3>
+                <p>Use your Apple ID email.</p>
+              </article>
+              <article>
+                <h3>02 Confirm</h3>
+                <p>Unlock your personal invite link.</p>
+              </article>
+              <article>
+                <h3>03 Invite</h3>
+                <p>Each confirmed friend moves you up.</p>
+              </article>
+            </div>
           </div>
 
           <WaitlistForm

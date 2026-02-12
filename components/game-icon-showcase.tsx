@@ -107,14 +107,19 @@ export function GameIconShowcase({ embedded = false }: GameIconShowcaseProps) {
   const Wrapper: "section" | "div" = embedded ? "div" : "section";
   const titleId = embedded ? "games-title-embedded" : "games-title";
   const className = embedded ? "games-showcase games-showcase--embedded" : "games-showcase";
+  const a11yProps = embedded ? { "aria-label": "Games lineup" } : { "aria-labelledby": titleId };
 
   return (
-    <Wrapper className={className} aria-labelledby={titleId}>
-      <p className="section-kicker">Today in Gameshow</p>
-      <div className="games-heading-row">
-        <h2 id={titleId}>A lineup you&apos;ll open every day.</h2>
-        <p>Eight daily games in a compact lineup.</p>
-      </div>
+    <Wrapper className={className} {...a11yProps}>
+      {embedded ? null : (
+        <>
+          <p className="section-kicker">Today in Gameshow</p>
+          <div className="games-heading-row">
+            <h2 id={titleId}>A lineup you&apos;ll open every day.</h2>
+            <p>Eight daily games in a compact lineup.</p>
+          </div>
+        </>
+      )}
 
       <div className="games-grid-rows">
         {gameRows.map((row, rowIndex) => (

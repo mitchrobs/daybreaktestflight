@@ -82,7 +82,15 @@ export function IMessagePreviewThread({
 
   return (
     <div ref={containerRef} className="imessage-thread">
-      <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
+      <div className="imessage-incoming-row">
+        <div className="imessage-contact-mini" aria-hidden="true">
+          <span className="imessage-contact-avatar">M</span>
+        </div>
+        <div className="imessage-incoming-message">
+          <span className="imessage-contact-name">Maya</span>
+          <div className="imessage-bubble incoming score-bubble">{SCORE_MESSAGE}</div>
+        </div>
+      </div>
       <IMessageTimestamp />
       <div className={`imessage-bubble outgoing typing-bubble ${phase === "typing" ? "is-active" : "is-hidden"}`} aria-hidden="true">
         <span className="typing-dot" />

@@ -64,7 +64,6 @@ main {
 .hero,
 .hero-games,
 .games-showcase,
-.steps,
 .early-access,
 .imessage-screen-shell,
 .footer {
@@ -233,11 +232,11 @@ main {
 }
 
 .games-showcase--embedded {
-  padding: 12px;
+  padding: 0;
   gap: 8px;
-  border-radius: 16px;
-  background: var(--surface-soft);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .section-kicker {
@@ -245,11 +244,6 @@ main {
   font-size: 0.67rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-}
-
-.games-showcase--embedded .section-kicker {
-  color: var(--muted);
-  font-size: 0.62rem;
 }
 
 .games-heading-row {
@@ -268,15 +262,6 @@ main {
   font-size: 0.93rem;
 }
 
-.games-showcase--embedded .games-heading-row h2 {
-  font-size: clamp(1.08rem, 3.5vw, 1.56rem);
-  line-height: 1.12;
-}
-
-.games-showcase--embedded .games-heading-row p {
-  font-size: 0.82rem;
-}
-
 .games-grid-rows {
   display: grid;
   gap: 8px;
@@ -288,18 +273,14 @@ main {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 5px;
 }
 
 .games-row::-webkit-scrollbar {
-  height: 6px;
-}
-
-.games-row::-webkit-scrollbar-thumb {
-  background: rgba(15, 17, 21, 0.15);
-  border-radius: 999px;
+  display: none;
 }
 
 .game-icon-card {
@@ -401,7 +382,7 @@ main {
 
 .early-access-copy {
   display: grid;
-  gap: 9px;
+  gap: 10px;
 }
 
 .early-access-copy h2 {
@@ -508,7 +489,7 @@ main {
 
 .imessage-intro {
   display: grid;
-  gap: 5px;
+  gap: 8px;
 }
 
 .imessage-kicker {
@@ -520,15 +501,15 @@ main {
 
 .imessage-heading {
   font-family: var(--font-sora), sans-serif;
-  font-size: clamp(0.98rem, 2.9vw, 1.12rem);
-  line-height: 1.24;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.28rem, 4.8vw, 2.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 
 .imessage-subheader {
-  color: #2d3139;
-  font-size: 0.84rem;
-  line-height: 1.42;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.46;
   max-width: 58ch;
 }
 
@@ -543,6 +524,48 @@ main {
   display: grid;
   gap: 8px;
   padding: 2px 0;
+}
+
+.imessage-incoming-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px;
+  align-items: start;
+}
+
+.imessage-contact-mini {
+  width: 26px;
+  padding-top: 2px;
+}
+
+.imessage-contact-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #ffffff;
+  background:
+    radial-gradient(68% 68% at 28% 24%, #f0f5ff 0%, rgba(240, 245, 255, 0) 100%),
+    linear-gradient(140deg, #8c6bff 0%, #4da4ff 46%, #44d6a2 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 4px rgba(18, 20, 24, 0.2);
+}
+
+.imessage-incoming-message {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.imessage-contact-name {
+  color: #81838b;
+  font-size: 0.62rem;
+  line-height: 1;
+  padding-left: 2px;
 }
 
 .imessage-bubble {
@@ -698,31 +721,36 @@ main {
 }
 
 .steps {
-  padding: 16px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 9px;
+  gap: 8px;
+  padding: 0;
+}
+
+.signup-flow-steps {
+  margin-top: 4px;
 }
 
 .steps article {
-  border-radius: 14px;
-  padding: 14px;
-  background: var(--surface-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 11px 12px;
+  background: #ffffff;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .steps h3 {
   color: var(--ink);
-  font-size: 1.02rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
+  letter-spacing: 0.13em;
+  margin-bottom: 4px;
 }
 
 .steps p {
   color: var(--ink-soft);
-  font-size: 0.96rem;
-  line-height: 1.45;
+  font-size: 0.88rem;
+  line-height: 1.35;
 }
 
 .footer {
@@ -961,7 +989,6 @@ main {
   .hero,
   .hero-games,
   .games-showcase,
-  .steps,
   .early-access,
   .imessage-screen-shell,
   .footer {
@@ -1009,6 +1036,16 @@ main {
 
   .imessage-subheader {
     color: rgba(242, 242, 247, 0.7);
+  }
+
+  .imessage-contact-name {
+    color: rgba(242, 242, 247, 0.55);
+  }
+
+  .imessage-contact-avatar {
+    background:
+      radial-gradient(68% 68% at 28% 24%, rgba(238, 243, 255, 0.55) 0%, rgba(238, 243, 255, 0) 100%),
+      linear-gradient(140deg, #8f72ff 0%, #4b8eff 46%, #2fbf94 100%);
   }
 
   .imessage-timestamp {
