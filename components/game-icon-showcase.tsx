@@ -75,31 +75,33 @@ export function GameIconShowcase() {
       <p className="section-kicker">Today in Gameshow</p>
       <div className="games-heading-row">
         <h2 id="games-title">A lineup you&apos;ll open every day.</h2>
-        <p>Eight daily games with polished iOS-style cards and quick play sessions.</p>
+        <p>Eight daily games with polished iOS-style cards and quick play sessions. Swipe to browse.</p>
       </div>
 
-      <div className="games-icon-grid">
-        {games.map((game) => (
-          <a
-            key={game.id}
-            className="game-icon-card"
-            data-game={game.variant}
-            href={game.href}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label={`Open ${game.name} on Gameshow`}
-          >
-            <span className="game-icon-shell" aria-hidden="true">
-              <span className="game-icon-highlight" />
-              <span className="game-icon-orb" />
-              <span className="game-icon-glyph" />
-            </span>
-            <span className="game-icon-meta">
-              <strong>{game.name}</strong>
-              <span>{game.tagline}</span>
-            </span>
-          </a>
-        ))}
+      <div className="games-carousel" role="region" aria-label="Games carousel">
+        <div className="games-carousel-track">
+          {games.map((game) => (
+            <a
+              key={game.id}
+              className="game-icon-card"
+              data-game={game.variant}
+              href={game.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`Open ${game.name} on Gameshow`}
+            >
+              <span className="game-icon-shell" aria-hidden="true">
+                <span className="game-icon-highlight" />
+                <span className="game-icon-orb" />
+                <span className="game-icon-glyph" />
+              </span>
+              <span className="game-icon-meta">
+                <strong>{game.name}</strong>
+                <span>{game.tagline}</span>
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

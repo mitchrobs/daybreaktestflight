@@ -1,15 +1,15 @@
 :root {
-  --bg: #eef2fb;
-  --bg-soft: #f8faff;
-  --ink: #10182b;
-  --muted: #5f6c82;
-  --accent: #1f6bff;
+  --bg: #efefef;
+  --bg-soft: #f7f7f7;
+  --ink: #111214;
+  --muted: #595c62;
+  --accent: #4f7dff;
   --accent-ink: #ffffff;
-  --line: rgba(20, 33, 64, 0.14);
-  --glass: rgba(255, 255, 255, 0.64);
-  --glass-strong: rgba(255, 255, 255, 0.82);
-  --glass-inner: rgba(255, 255, 255, 0.62);
-  --glass-shadow: 0 22px 48px rgba(14, 30, 67, 0.14);
+  --line: rgba(16, 18, 24, 0.16);
+  --glass: rgba(255, 255, 255, 0.68);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+  --glass-inner: rgba(255, 255, 255, 0.74);
+  --glass-shadow: 0 22px 48px rgba(14, 15, 20, 0.12);
   --success: #0f7c54;
   --error: #b1261d;
 }
@@ -27,9 +27,9 @@ html {
 body {
   font-family: var(--font-sora), sans-serif;
   background:
-    radial-gradient(70% 52% at 2% -4%, rgba(106, 171, 255, 0.34), transparent 68%),
-    radial-gradient(62% 52% at 96% 6%, rgba(255, 138, 173, 0.24), transparent 72%),
-    linear-gradient(180deg, #f8fbff 0%, #eef3fc 45%, #edf2fb 100%);
+    radial-gradient(68% 48% at 2% -6%, rgba(79, 125, 255, 0.12), transparent 70%),
+    radial-gradient(60% 48% at 97% 7%, rgba(60, 199, 170, 0.08), transparent 75%),
+    linear-gradient(180deg, #f9f9f9 0%, #f1f1f2 52%, #ececed 100%);
   color: var(--ink);
   line-height: 1.38;
   min-height: 100vh;
@@ -108,10 +108,10 @@ main {
 }
 
 .invite-banner {
-  border: 1px solid rgba(31, 107, 255, 0.26);
+  border: 1px solid rgba(79, 125, 255, 0.28);
   border-radius: 14px;
   padding: 12px 14px;
-  background: linear-gradient(125deg, rgba(31, 107, 255, 0.12), rgba(124, 233, 255, 0.16));
+  background: linear-gradient(125deg, rgba(79, 125, 255, 0.08), rgba(255, 255, 255, 0.88));
   font-size: 0.87rem;
 }
 
@@ -175,9 +175,10 @@ main {
 }
 
 .cta.primary {
-  background: linear-gradient(140deg, #0f1f44, #1f64f6);
+  background: linear-gradient(146deg, #121316, #050507);
   color: var(--accent-ink);
-  border-color: rgba(17, 43, 98, 0.84);
+  border-color: rgba(5, 5, 8, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 24px rgba(17, 20, 30, 0.28), 0 0 0 1px rgba(79, 125, 255, 0.24);
 }
 
 .cta:disabled {
@@ -216,10 +217,30 @@ main {
   max-width: 62ch;
 }
 
-.games-icon-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+.games-carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+  margin-inline: -2px;
+  padding-bottom: 6px;
+}
+
+.games-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.games-carousel::-webkit-scrollbar-thumb {
+  background: rgba(17, 20, 31, 0.22);
+  border-radius: 999px;
+}
+
+.games-carousel-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 2px 2px 10px;
 }
 
 .game-icon-card {
@@ -228,18 +249,20 @@ main {
   --glyph-glow: rgba(255, 255, 255, 0.26);
   display: grid;
   gap: 10px;
+  flex: 0 0 clamp(170px, 44vw, 206px);
+  scroll-snap-align: start;
   border-radius: 18px;
-  border: 1px solid rgba(24, 38, 73, 0.16);
-  background: linear-gradient(158deg, rgba(255, 255, 255, 0.82), rgba(233, 242, 255, 0.72));
+  border: 1px solid rgba(14, 17, 24, 0.18);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(241, 243, 247, 0.82));
   padding: 10px;
   transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
-  box-shadow: 0 9px 18px rgba(24, 38, 73, 0.09);
+  box-shadow: 0 10px 20px rgba(12, 14, 21, 0.12);
 }
 
 .game-icon-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 28px rgba(24, 38, 73, 0.16);
-  border-color: rgba(20, 45, 97, 0.28);
+  box-shadow: 0 18px 28px rgba(12, 14, 21, 0.2);
+  border-color: rgba(79, 125, 255, 0.42);
 }
 
 .game-icon-shell {
@@ -278,6 +301,7 @@ main {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.26),
     0 10px 18px rgba(15, 30, 62, 0.35);
+  filter: saturate(72%);
 }
 
 .game-icon-glyph {
@@ -536,9 +560,28 @@ main {
 }
 
 .imessage-screen {
-  gap: 8px;
+  gap: 12px;
   align-content: start;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+.imessage-intro {
+  display: grid;
+  gap: 6px;
+}
+
+.imessage-kicker {
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.imessage-thread-shell {
+  border: 1px solid rgba(17, 20, 30, 0.08);
+  border-radius: 16px;
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 249, 251, 0.72));
 }
 
 .screen-header {
@@ -558,8 +601,9 @@ main {
 
 .imessage-subheader {
   color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.35;
+  font-size: 0.84rem;
+  line-height: 1.42;
+  max-width: 60ch;
 }
 
 .imessage-thread {
@@ -828,6 +872,26 @@ main {
 
 .mobile-sticky-cta .cta {
   width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.mobile-sticky-cta .cta.primary::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(79, 125, 255, 0.9), rgba(98, 218, 255, 0.86), rgba(121, 238, 203, 0.88), rgba(79, 125, 255, 0.9));
+  background-size: 220% 220%;
+  filter: blur(10px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.28s ease;
+}
+
+.mobile-sticky-cta .cta.primary:hover::before {
+  opacity: 0.92;
+  animation: sticky-cta-glow 2.2s linear infinite;
 }
 
 .confirm-page {
@@ -954,6 +1018,20 @@ main {
   }
 }
 
+@keyframes sticky-cta-glow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .imessage-bubble.link-bubble.is-visible {
     animation: none;
@@ -977,28 +1055,32 @@ main {
   .cta:hover {
     transform: none;
   }
+
+  .mobile-sticky-cta .cta.primary:hover::before {
+    animation: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a1020;
-    --bg-soft: #0d1426;
-    --ink: #f2f5ff;
-    --muted: #a7b2cc;
-    --line: rgba(164, 182, 223, 0.24);
-    --glass: rgba(17, 25, 46, 0.66);
-    --glass-strong: rgba(18, 28, 52, 0.82);
-    --glass-inner: rgba(27, 40, 72, 0.64);
-    --glass-shadow: 0 26px 52px rgba(0, 0, 0, 0.46);
+    --bg: #0d0d0f;
+    --bg-soft: #111113;
+    --ink: #f2f3f5;
+    --muted: #b0b3ba;
+    --line: rgba(229, 233, 240, 0.22);
+    --glass: rgba(22, 22, 24, 0.72);
+    --glass-strong: rgba(28, 28, 31, 0.86);
+    --glass-inner: rgba(35, 35, 39, 0.7);
+    --glass-shadow: 0 26px 52px rgba(0, 0, 0, 0.56);
     --success: #57d6a7;
     --error: #ff7e73;
   }
 
   body {
     background:
-      radial-gradient(70% 52% at 2% -4%, rgba(78, 123, 212, 0.34), transparent 68%),
-      radial-gradient(62% 52% at 96% 6%, rgba(166, 83, 130, 0.3), transparent 72%),
-      linear-gradient(180deg, #0c1326 0%, #0a1121 45%, #080f1e 100%);
+      radial-gradient(70% 48% at 2% -4%, rgba(79, 125, 255, 0.12), transparent 72%),
+      radial-gradient(62% 48% at 96% 6%, rgba(121, 238, 203, 0.09), transparent 76%),
+      linear-gradient(180deg, #101012 0%, #0c0c0e 45%, #09090a 100%);
   }
 
   .topbar::before,
@@ -1007,36 +1089,41 @@ main {
   .early-access::before,
   .imessage-screen-shell::before,
   .footer::before {
-    border-color: rgba(186, 206, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.17);
   }
 
   .field,
   .share-row input,
   .badge-pill {
-    background: rgba(20, 28, 50, 0.84);
+    background: rgba(24, 24, 28, 0.86);
     color: var(--ink);
   }
 
   .game-icon-card {
-    background: linear-gradient(160deg, rgba(35, 51, 92, 0.86), rgba(20, 32, 61, 0.74));
-    border-color: rgba(177, 201, 255, 0.2);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.36);
+    background: linear-gradient(160deg, rgba(38, 38, 44, 0.9), rgba(23, 23, 27, 0.82));
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.46);
   }
 
   .game-icon-card:hover {
-    border-color: rgba(192, 214, 255, 0.34);
+    border-color: rgba(117, 155, 255, 0.5);
   }
 
   .game-icon-meta span {
-    color: rgba(198, 212, 245, 0.82);
+    color: rgba(214, 218, 226, 0.84);
   }
 
   .game-icon-shell {
-    border-color: rgba(198, 216, 255, 0.38);
+    border-color: rgba(236, 239, 244, 0.34);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.24),
       inset 0 -1px 16px rgba(0, 0, 0, 0.28),
       0 10px 18px rgba(0, 0, 0, 0.38);
+  }
+
+  .imessage-thread-shell {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(31, 31, 36, 0.92), rgba(25, 25, 29, 0.86));
   }
 
   .imessage-bubble.incoming {
@@ -1046,7 +1133,7 @@ main {
 
   .imessage-screen {
     border-color: rgba(255, 255, 255, 0.15);
-    background: linear-gradient(140deg, rgba(18, 28, 52, 0.94), rgba(20, 34, 64, 0.7));
+    background: linear-gradient(140deg, rgba(30, 30, 35, 0.94), rgba(21, 21, 25, 0.82));
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
   }
 
@@ -1086,9 +1173,10 @@ main {
   }
 
   .cta.primary {
-    background: linear-gradient(144deg, #dce7ff, #9fc2ff);
-    color: #0c1f4d;
-    border-color: rgba(199, 216, 255, 0.72);
+    background: linear-gradient(146deg, #f4f4f6, #d8d8dd);
+    color: #08090b;
+    border-color: rgba(255, 255, 255, 0.68);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), 0 12px 24px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(79, 125, 255, 0.24);
   }
 }
 
@@ -1097,9 +1185,8 @@ main {
     padding: 22px 6vw 32px;
   }
 
-  .games-icon-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+  .game-icon-card {
+    flex-basis: clamp(188px, 30vw, 222px);
   }
 
   .early-access {
@@ -1122,8 +1209,8 @@ main {
 }
 
 @media (min-width: 960px) {
-  .games-icon-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .game-icon-card {
+    flex-basis: clamp(198px, 23vw, 236px);
   }
 
   .footer {

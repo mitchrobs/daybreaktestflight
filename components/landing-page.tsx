@@ -66,16 +66,22 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
         <section className="imessage-screen-shell">
           <div className="visual-grid">
             <article className="imessage-screen" aria-label="iMessage invite preview">
-              <h2 className="imessage-heading">Your group chat, ready in one tap.</h2>
-              <p className="imessage-subheader">
-                Daybreak turns your daily score into a clean share card so your friends can jump straight in from iMessage.
-              </p>
-              <IMessagePreviewThread
-                previewInviteUrl={previewInviteUrl}
-                previewImageUrl={previewImageUrl}
-                previewTitle={previewTitle}
-                previewDomain={previewDomain}
-              />
+              <div className="imessage-intro">
+                <p className="imessage-kicker">Group Chat Import</p>
+                <h2 className="imessage-heading">Your group chat, ready in one tap.</h2>
+                <p className="imessage-subheader">
+                  Daybreak turns your daily score into a clean share card so your friends can jump straight in from iMessage.
+                </p>
+              </div>
+
+              <div className="imessage-thread-shell">
+                <IMessagePreviewThread
+                  previewInviteUrl={previewInviteUrl}
+                  previewImageUrl={previewImageUrl}
+                  previewTitle={previewTitle}
+                  previewDomain={previewDomain}
+                />
+              </div>
             </article>
           </div>
         </section>
