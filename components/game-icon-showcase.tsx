@@ -138,7 +138,7 @@ export function GameIconShowcase({ embedded = false }: GameIconShowcaseProps) {
                   aria-label={`Open ${game.name} on Gameshow`}
                 >
                   <span className={`game-icon-tile ${game.tileClassName}`} aria-hidden="true">
-                    <Icon className="game-icon-symbol" size={18} strokeWidth={2.1} />
+                    <Icon className="game-icon-symbol" size={26} strokeWidth={2.2} />
                   </span>
                   <span className="game-icon-meta">
                     <strong>{game.name}</strong>
