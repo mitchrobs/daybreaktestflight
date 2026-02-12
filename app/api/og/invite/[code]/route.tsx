@@ -32,6 +32,7 @@ export async function GET(
           fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
         }}>
         {inviteTemplateDataUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={inviteTemplateDataUrl}
             alt=""

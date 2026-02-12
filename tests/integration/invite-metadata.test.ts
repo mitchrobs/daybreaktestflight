@@ -23,7 +23,9 @@ describe("invite page metadata", () => {
     expect(metadata.title).toContain("Taylor invited you");
     expect(metadata.openGraph?.images).toBeDefined();
 
-    const image = metadata.openGraph?.images?.[0] as { url: string };
+    const image = metadata.openGraph?.images?.[0] as { url: string; width: number; height: number };
     expect(image.url).toContain("/api/og/invite/ABC123.png");
+    expect(image.width).toBe(1200);
+    expect(image.height).toBe(630);
   });
 });

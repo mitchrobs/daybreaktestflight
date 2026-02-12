@@ -46,9 +46,6 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
             <a className="cta primary" href="#waitlist">
               Request Invite
             </a>
-            <a className="cta" href="#how-it-works">
-              How It Works
-            </a>
           </div>
         </section>
 
@@ -58,6 +55,7 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
 
             <article className="imessage-screen" aria-label="iMessage invite preview">
               <h2 className="imessage-heading">Import your games group chat in one click</h2>
+              <p className="imessage-subheader">Daybreak groups share your daily game results with your friends</p>
               <IMessagePreviewThread
                 previewInviteUrl={previewInviteUrl}
                 previewImageUrl={previewImageUrl}
@@ -66,12 +64,6 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
               />
             </article>
           </div>
-        </section>
-
-        <section className="copy">
-          <p>Daybreak is a calm daily ritual for people already discussing Wordle and Connections every day.</p>
-          <p>This beta is invitation-driven so each wave stays high-quality and conversational.</p>
-          <p id="how-it-works">Once confirmed, your referral link carries your name into the rich-link preview image.</p>
         </section>
 
         <section className="steps">
