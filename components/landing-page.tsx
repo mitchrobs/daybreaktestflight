@@ -8,6 +8,8 @@ type LandingPageProps = {
 };
 
 export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
+  const previewTitle = inviterName ? `${inviterName} invited you to join Daybreak` : "Join Daybreak on TestFlight";
+
   return (
     <div className="landing-shell">
       <header className="topbar">
@@ -63,8 +65,17 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="imessage-bubble outgoing">
-                  I&apos;m trying Daybreak. Join me and share your NYT puzzle results here too.
+                <div className="imessage-bubble outgoing link-bubble">
+                  <p>I&apos;m trying Daybreak. Join me and share your NYT puzzle results here too.</p>
+                  <div className="imessage-link-card" role="img" aria-label={previewTitle}>
+                    <div className="imessage-link-image">
+                      <span>{inviterName ? `${inviterName} invited you` : "You invited your group chat"}</span>
+                    </div>
+                    <div className="imessage-link-meta">
+                      <strong>{previewTitle}</strong>
+                      <span>daybreak.app</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
