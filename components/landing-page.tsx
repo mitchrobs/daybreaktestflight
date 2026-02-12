@@ -40,7 +40,7 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
             <p className="hero-sub">Daily play, shared wins, and group-chat momentum with people you actually play with.</p>
 
             <div className="hero-actions">
-              <a className="cta primary" href="#waitlist">
+              <a className="cta primary cta-glow" href="#waitlist">
                 Start Playing
               </a>
             </div>
@@ -68,10 +68,8 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
             <article className="imessage-screen" aria-label="iMessage invite preview">
               <div className="imessage-intro">
                 <p className="imessage-kicker">Group Chat Import</p>
-                <h2 className="imessage-heading">Your group chat, ready in one tap.</h2>
-                <p className="imessage-subheader">
-                  Daybreak turns your daily score into a clean share card so your friends can jump straight in from iMessage.
-                </p>
+                <h2 className="imessage-heading">Instantly import your games group chat</h2>
+                <p className="imessage-subheader">Daybreak groups share the right game scores to the right friends.</p>
               </div>
 
               <div className="imessage-thread-shell">
@@ -114,7 +112,7 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
       </footer>
 
       <div className="mobile-sticky-cta">
-        <a className="cta primary" href="#waitlist">
+        <a className="cta primary cta-glow" href="#waitlist">
           Start Playing
         </a>
       </div>

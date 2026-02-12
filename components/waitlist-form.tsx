@@ -33,6 +33,8 @@ export function WaitlistForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successState, setSuccessState] = useState<"none" | "pending" | "already">("none");
+  const usesStartPlayingLabel = submitLabel.trim().toLowerCase() === "start playing";
+  const submitButtonClassName = usesStartPlayingLabel ? "cta primary cta-glow" : "cta";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -112,7 +114,7 @@ export function WaitlistForm({
           type="email"
         />
 
-        <button className="cta" type="submit" disabled={isSubmitting}>
+        <button className={submitButtonClassName} type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : submitLabel}
         </button>
       </form>

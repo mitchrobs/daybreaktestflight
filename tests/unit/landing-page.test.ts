@@ -28,7 +28,8 @@ describe("landing page invite preview", () => {
     expect(markup).toContain("Whodunit");
     expect(markup).toContain("Trivia");
     expect(markup).toContain("Mini Crossword");
-    expect(markup).toContain("Your group chat, ready in one tap.");
+    expect(markup).toContain("Instantly import your games group chat");
+    expect(markup).toContain("Daybreak groups share the right game scores to the right friends.");
     expect(markup).toContain("#106 3/6");
     expect(markup).toContain("⬛⬛🟨⬛⬛");
     expect(markup).toContain("⬛🟩⬛⬛⬛");
