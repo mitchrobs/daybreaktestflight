@@ -7,99 +7,116 @@ type LandingPageProps = {
 };
 
 export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
-  const date = new Date();
-  const day = date.toLocaleDateString("en-US", { weekday: "short" });
-  const fullDate = date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  });
-
   return (
-    <>
-      <header className="topbar">
-        <div className="topbar-left">
-          <span className="wordmark">Daybreak</span>
-        </div>
+    <div className="landing-shell">
+      <div className="orb orb-left" aria-hidden="true" />
+      <div className="orb orb-right" aria-hidden="true" />
+
+      <header className="site-header">
+        <span className="wordmark">Daybreak</span>
+        <a className="cta subtle desktop-only" href="#waitlist">
+          Join Queue
+        </a>
       </header>
 
-      <main>
+      <main className="landing-main">
         {inviterName ? (
-          <section className="invite-banner" aria-live="polite">
-            You were invited by <strong>{inviterName}</strong>
+          <section className="invite-banner reveal" aria-live="polite">
+            <p>
+              You were invited by <strong>{inviterName}</strong>
+            </p>
+            <p>Your confirmed signup gives {inviterName} +5 queue points.</p>
           </section>
         ) : null}
 
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-stack" id="hero-title">
-            <div className="hero-line">Daily</div>
-            <div className="hero-line">Games</div>
-            <div className="hero-line">With Your</div>
-            <div className="hero-line">NYT Group</div>
-            <div className="hero-line">On Daybreak</div>
-          </div>
-        </section>
+        <section className="hero-grid" aria-labelledby="hero-title">
+          <div className="hero-copy reveal">
+            <p className="hero-tag">Private TestFlight Beta</p>
+            <h1 id="hero-title" className="hero-title">
+              Bring your NYT Games group chat into Daybreak first.
+            </h1>
+            <p className="hero-subtitle">
+              Daily puzzle check-ins, tighter conversation, and a calmer iOS routine. Join the queue, confirm your
+              email, and invite friends with your personalized iMessage preview card.
+            </p>
 
-        <div className="hero-cta">
-          <a className="cta" href="#waitlist">
-            Join The Invite Queue
-          </a>
-        </div>
-
-        <section className="visuals">
-          <div className="date-row">
-            <div className="day">
-              {day}
-              <span className="accent-dot">•</span>
-            </div>
-            <div className="date">{fullDate}</div>
-          </div>
-
-          <div className="visual-grid">
-            <div className="screen">
-              <div className="screen-header">What happens next</div>
-              <div className="screen-item">
-                <span>Join the queue</span>
-                <span className="time">Now</span>
-              </div>
-              <div className="screen-item">
-                <span>Confirm email</span>
-                <span className="time">~1 min</span>
-              </div>
-              <div className="screen-item">
-                <span>Get your invite link</span>
-                <span className="time">Instant</span>
-              </div>
-              <div className="screen-item">
-                <span>Move up with referrals</span>
-                <span className="time">+5 each</span>
-              </div>
+            <div className="hero-chips">
+              <span>iOS only</span>
+              <span>Weekly invite waves</span>
+              <span>+5 per confirmed referral</span>
             </div>
 
+            <div className="hero-actions">
+              <a className="cta" href="#waitlist">
+                Request Access
+              </a>
+              <a className="cta subtle" href="#how-it-works">
+                How It Works
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-side reveal">
             <WaitlistForm referralCode={referralCode} />
+
+            <aside className="preview-card" aria-label="Invite preview">
+              <div className="preview-label">iMessage rich-link preview</div>
+              <div className="preview-bubble">
+                <div className="preview-bubble-title">
+                  {inviterName ? `${inviterName} invited you` : "Your name appears here"}
+                </div>
+                <div className="preview-bubble-copy">Bring your NYT Games group chat to Daybreak.</div>
+              </div>
+            </aside>
           </div>
         </section>
 
-        <section className="copy">
-          <p>
-            Daybreak is a focused daily puzzle ritual designed for people who already compare Wordle and Connections in
-            group chats.
-          </p>
-          <p>
-            Every confirmed signup gets a personalized iMessage-ready invite link so your whole NYT Games group can join
-            the beta queue together.
-          </p>
-          <p>TestFlight invites are sent in weekly waves. Referrals move confirmed members up by 5 spots each.</p>
+        <section className="steps-section reveal" id="how-it-works">
+          <h2>How the queue works</h2>
+          <div className="steps-grid">
+            <article className="step-card">
+              <span className="step-index">01</span>
+              <h3>Join with Apple ID email</h3>
+              <p>Use the email you want on TestFlight and confirm it in one tap.</p>
+            </article>
+            <article className="step-card">
+              <span className="step-index">02</span>
+              <h3>Get your personal invite link</h3>
+              <p>After confirmation, you unlock a custom share link with your name in the preview image.</p>
+            </article>
+            <article className="step-card">
+              <span className="step-index">03</span>
+              <h3>Move up with referrals</h3>
+              <p>Each confirmed friend signup adds +5 points to your position.</p>
+            </article>
+          </div>
         </section>
 
-        <div className="hero-cta bottom">
-          <a className="cta" href="#waitlist">
-            Get On The List
-          </a>
-        </div>
+        <section className="detail-grid reveal">
+          <article className="detail-card">
+            <h2>Why this beta is different</h2>
+            <ul className="detail-list">
+              <li>Built for puzzle players already sharing Wordle and Connections in group chats.</li>
+              <li>Invite system is iMessage-native, not a generic referral spreadsheet.</li>
+              <li>Manual weekly waves keep the TestFlight cohort intentional and high-signal.</li>
+            </ul>
+          </article>
+
+          <article className="detail-card faq-card">
+            <h2>FAQ</h2>
+            <dl>
+              <dt>When are invites sent?</dt>
+              <dd>We send TestFlight invites in weekly waves.</dd>
+              <dt>Does referral signup count instantly?</dt>
+              <dd>No. Referral points are added only after email confirmation.</dd>
+              <dt>What devices are supported?</dt>
+              <dd>iPhone on iOS through Apple TestFlight.</dd>
+            </dl>
+          </article>
+        </section>
       </main>
 
-      <footer className="footer">
+      <footer className="site-footer">
         <div className="footer-links">
           <Link href="#waitlist">Waitlist</Link>
           <span>•</span>
@@ -107,8 +124,14 @@ export function LandingPage({ referralCode, inviterName }: LandingPageProps) {
           <span>•</span>
           <Link href="/">Daybreak</Link>
         </div>
-        <div className="footer-meta">Invite-only beta • Built for iOS TestFlight • ©2026</div>
+        <div className="footer-meta">Invite-only beta • iOS TestFlight • ©2026</div>
       </footer>
-    </>
+
+      <div className="mobile-sticky-cta">
+        <a className="cta" href="#waitlist">
+          Join The Queue
+        </a>
+      </div>
+    </div>
   );
 }

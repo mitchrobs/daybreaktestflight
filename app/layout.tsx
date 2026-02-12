@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Sora } from "next/font/google";
+import { Fraunces, Sora } from "next/font/google";
 import "@/app/globals.css";
 import { PLAUSIBLE_DOMAIN, SITE_URL } from "@/lib/config";
 
@@ -8,6 +8,12 @@ const sora = Sora({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sora"
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-fraunces"
 });
 
 export const metadata: Metadata = {
@@ -33,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={sora.variable}>
+      <body className={`${sora.variable} ${fraunces.variable}`}>
         {children}
         {PLAUSIBLE_DOMAIN ? (
           <Script

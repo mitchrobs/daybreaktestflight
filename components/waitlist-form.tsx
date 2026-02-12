@@ -71,9 +71,9 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
 
   return (
     <div className="waitlist-card" id="waitlist">
-      <div className="screen-header">Join the beta queue</div>
+      <div className="screen-header">Join the queue</div>
       <p className="waitlist-note">
-        Use the Apple ID email you want for TestFlight. We send invites in weekly waves.
+        Use your Apple ID email for TestFlight access. Invite waves go out weekly.
       </p>
 
       <form onSubmit={handleSubmit} className="waitlist-form" noValidate>
@@ -107,12 +107,12 @@ export function WaitlistForm({ referralCode }: WaitlistFormProps) {
         />
 
         <button className="cta" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Request TestFlight Access"}
+          {isSubmitting ? "Submitting..." : "Get Early Access"}
         </button>
       </form>
 
       {successState === "pending" ? (
-        <p className="success-message">Check your inbox. Confirm your email to unlock your personal invite link.</p>
+        <p className="success-message">Check your inbox. Confirm to unlock your personalized invite card.</p>
       ) : null}
 
       {successState === "already" ? (
